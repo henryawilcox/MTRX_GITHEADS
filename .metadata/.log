@@ -1,0 +1,36 @@
+!SESSION 2025-04-02 16:23:31.728 -----------------------------------------------
+eclipse.buildId=Version 1.18.0
+java.version=21.0.3
+java.vendor=Eclipse Adoptium
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_AU
+Command-line arguments:  -os win32 -ws win32 -arch x86_64
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 4 4 2025-04-02 16:23:54.943
+!MESSAGE CubeMX plugin appears to be active, Log4j initialization might be too late.
+
+!ENTRY com.st.stm32cube.ide.mcu.informationcenter 1 1 2025-04-02 16:23:54.947
+!MESSAGE Log4j2 initialized with config file C:\Users\roryl\Tron2CCC\.metadata\.log4j2.xml
+
+!ENTRY com.st.stm32cube.ide.mcu.ide 1 1 2025-04-02 16:24:13.407
+!MESSAGE Started RMI Server, listening on port 41337
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-04-02 16:25:41.067
+!MESSAGE Indexed 'DigitalIO' (3 sources, 53 headers) in 2.98 sec: 1,954 declarations; 2,863 references; 0 unresolved inclusions; 2 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-04-02 16:26:12.230
+!MESSAGE Indexed 'SerialInterface' (2 sources, 53 headers) in 0.708 sec: 1,952 declarations; 2,861 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2025-04-02 16:28:48.979
+!MESSAGE Indexed 'TimerInterface' (2 sources, 53 headers) in 0.517 sec: 1,952 declarations; 2,861 references; 0 unresolved inclusions; 1 syntax errors; 2 unresolved names (0.042%)
+
+!ENTRY org.eclipse.ui.ide 4 4 2025-04-02 16:38:44.844
+!MESSAGE Problems saving workspace
+
+!ENTRY org.eclipse.ui.ide 2 1 2025-04-02 16:38:44.852
+!MESSAGE Problems occurred while trying to save the state of the workbench.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2025-04-02 16:38:44.853
+!MESSAGE The project description file (.project) for 'DigitalIO' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2025-04-02 16:38:44.853
+!MESSAGE The project description file (.project) for 'SerialInterface' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
+!SUBENTRY 1 org.eclipse.core.resources 2 234 2025-04-02 16:38:44.853
+!MESSAGE The project description file (.project) for 'TimerInterface' was missing.  This file contains important information about the project.  A new project description file has been created, but some information about the project may have been lost.
