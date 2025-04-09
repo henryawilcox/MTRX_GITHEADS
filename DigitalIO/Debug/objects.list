@@ -1,3 +1,4 @@
+"./Src/digital_io.o"
 "./Src/main.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"

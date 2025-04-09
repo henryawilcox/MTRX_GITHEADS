@@ -1,0 +1,7 @@
+/Users/henrywilcox/MTRX2700-2025/stm32f303-definitions/Core/Inc/core_cm4.h:1688:22:__NVIC_EnableIRQ	2
+/Users/henrywilcox/MTRX2700-2025/stm32f303-definitions/Core/Inc/core_cm4.h:1816:22:__NVIC_SetPriority	2
+../Src/digital_io.c:33:6:EXTI0_IRQHandler	2
+../Src/digital_io.c:47:6:enable_clocks	1
+../Src/digital_io.c:53:6:initialise_board	1
+../Src/digital_io.c:60:6:enable_interrupt	1
+../Src/digital_io.c:89:6:DigitalInitialise	1

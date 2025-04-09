@@ -8,3 +8,5 @@
  * on_button_press Function to call when button is pressed
  */
 void DigitalInitialise(void (*callback)());
+
+#endif /* DIGITAL_H_ */

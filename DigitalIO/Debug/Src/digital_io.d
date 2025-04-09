@@ -1,4 +1,4 @@
-Src/main.o: ../Src/main.c ../Inc/digital_io.h \
+Src/digital_io.o: ../Src/digital_io.c ../Inc/digital_io.h \
  /Users/henrywilcox/MTRX2700-2025/stm32f303-definitions/Core/Inc/stm32f303xc.h \
  /Users/henrywilcox/MTRX2700-2025/stm32f303-definitions/Core/Inc/core_cm4.h \
  /Users/henrywilcox/MTRX2700-2025/stm32f303-definitions/Core/Inc/cmsis_version.h \
