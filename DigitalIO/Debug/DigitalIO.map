@@ -904,10 +904,10 @@ LOAD /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.id
  .debug_macro   0x00002261    0x12a3a ./Src/digital_io.o
  .debug_macro   0x00014c9b       0xc9 ./Src/main.o
 
-.debug_line     0x00000000      0xac5
- .debug_line    0x00000000      0x5bb ./Src/digital_io.o
- .debug_line    0x000005bb      0x48f ./Src/main.o
- .debug_line    0x00000a4a       0x7b ./Startup/startup_stm32f303vctx.o
+.debug_line     0x00000000      0xa45
+ .debug_line    0x00000000      0x57b ./Src/digital_io.o
+ .debug_line    0x0000057b      0x44f ./Src/main.o
+ .debug_line    0x000009ca       0x7b ./Startup/startup_stm32f303vctx.o
 
 .debug_str      0x00000000    0x726fd
  .debug_str     0x00000000    0x72698 ./Src/digital_io.o
