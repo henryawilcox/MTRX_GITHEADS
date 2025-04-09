@@ -33,34 +33,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := DigitalIO
+BUILD_ARTIFACT_NAME := TimerInterface
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-DigitalIO.elf \
+TimerInterface.elf \
 
 MAP_FILES += \
-DigitalIO.map \
+TimerInterface.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-DigitalIO.list \
+TimerInterface.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: DigitalIO.elf secondary-outputs
+main-build: TimerInterface.elf secondary-outputs
 
 # Tool invocations
-DigitalIO.elf DigitalIO.map: $(OBJS) $(USER_OBJS) C:\Users\emsto\Documents\MTRX2700CLab\MTRX_GITHEADS\DigitalIO\STM32F303VCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "DigitalIO.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\emsto\Documents\MTRX2700CLab\MTRX_GITHEADS\DigitalIO\STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="DigitalIO.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+TimerInterface.elf TimerInterface.map: $(OBJS) $(USER_OBJS) C:\Users\emsto\Documents\MTRX2700CLab\MTRX_GITHEADS\TimerInterface\STM32F303VCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "TimerInterface.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\emsto\Documents\MTRX2700CLab\MTRX_GITHEADS\TimerInterface\STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="TimerInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -69,14 +69,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-DigitalIO.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "DigitalIO.list"
+TimerInterface.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "TimerInterface.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) DigitalIO.elf DigitalIO.list DigitalIO.map default.size.stdout
+	-$(RM) TimerInterface.elf TimerInterface.list TimerInterface.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)
