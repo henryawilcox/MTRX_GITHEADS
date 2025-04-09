@@ -30,6 +30,8 @@
 // function pointer is defined
 void (*on_button_press)() = 0x00;
 
+static uint8_t led_state = 0x00;
+
 void EXTI0_IRQHandler(void)
 {
 	// run the button press handler (make sure it is not null first !)
@@ -82,6 +84,30 @@ void enable_interrupt() {
 
 	// Re-enable all interrupts (now that we are finished)
 	__enable_irq();
+}
+
+/**
+ * Get the current LED bitmask
+ * @return Current state of LEDs as a bitmask
+ */
+uint8_t GetLEDBitmask()
+{
+    // Return the current LED state from our stored variable
+    return led_state;
+}
+
+/**
+ * Set the LED state using a bitmask
+ * @param mask Bitmask representing LED states
+ */
+void SetLEDBitmask(uint8_t mask)
+{
+    // Store the new LED state
+    led_state = mask;
+
+    // Write the pattern to the high byte of the ODR register (PE8-PE15)
+    uint8_t *led_register = ((uint8_t*)&(GPIOE->ODR)) + 1;
+    *led_register = mask;
 }
 
 

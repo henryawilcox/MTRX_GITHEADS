@@ -9,4 +9,11 @@
  */
 void DigitalInitialise(void (*callback)());
 
+//Get current state of bitmask and return it
+uint8_t GetLEDBitmask();
+
+// Set the LED state using a bitmask
+void SetLEDBitmask(uint8_t mask);
+
+
 #endif /* DIGITAL_H_ */

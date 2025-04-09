@@ -25,14 +25,20 @@
 #endif
 
 void chase_led(){
-	uint8_t *led_register = ((uint8_t*)&(GPIOE->ODR)) + 1;
+	{
+	    // Get current LED state
+	    uint8_t led_mask = GetLEDBitmask();
 
-	*led_register <<= 1;
-	if (*led_register == 0) {
-		*led_register = 1;
+	    // Shift left by 1
+	    led_mask <<= 1;
+	    if (led_mask == 0) {
+	        led_mask = 1;
+	    }
+
+	    // Update LED state
+	    SetLEDBitmask(led_mask);
 	}
 }
-
 
 int main(void)
 {
