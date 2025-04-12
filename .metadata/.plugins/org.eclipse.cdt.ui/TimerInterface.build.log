@@ -1,0 +1,7 @@
+15:19:55 **** Build of configuration Debug for project TimerInterface ****
+make -j9 all 
+Src/main.d:1: *** multiple target patterns.  Stop.
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+
+15:19:55 Build Failed. 1 errors, 0 warnings. (took 175ms)
+

@@ -1,0 +1,88 @@
+15:20:10 **** Build of configuration Debug for project week6-modular-design ****
+make -j9 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303vctx.d" -MT"Startup/startup_stm32f303vctx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Startup/startup_stm32f303vctx.o" "../Startup/startup_stm32f303vctx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -I"/Users/henrywilcox/MTRX_GITHEADS/stm32f303-definitions/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/movement.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -I"/Users/henrywilcox/MTRX_GITHEADS/stm32f303-definitions/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/movement.d" -MT"Src/movement.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/movement.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -I"/Users/henrywilcox/MTRX_GITHEADS/stm32f303-definitions/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/serial.o"
+arm-none-eabi-gcc "../Src/shape.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -I"/Users/henrywilcox/MTRX_GITHEADS/stm32f303-definitions/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/shape.d" -MT"Src/shape.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/shape.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -I"/Users/henrywilcox/MTRX_GITHEADS/stm32f303-definitions/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -I"/Users/henrywilcox/MTRX_GITHEADS/stm32f303-definitions/Core/Inc" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -o "Src/sysmem.o"
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:37:27: warning: unused variable 'test' [-Wunused-variable]
+   37 |         volatile uint32_t test = 0;
+      |                           ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:51:35: warning: pointer targets in initialization of 'uint8_t *' {aka 'unsigned char *'} from 'char *' differ in signedness [-Wpointer-sign]
+   51 |         uint8_t *string_to_send = "This is a string !\r\n";
+      |                                   ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'ShapeDemo':
+../Src/main.c:102:17: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  102 |         sprintf(&string_buffer[0], "sliding the shapes by 1.5 units\r\n");
+      |                 ^~~~~~~~~~~~~~~~~
+      |                 |
+      |                 uint8_t * {aka unsigned char *}
+In file included from ../Src/main.c:21:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Src/main.c:112:17: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+  112 |         sprintf(&string_buffer[0], "rolling the shapes by 2.5 units\n");
+      |                 ^~~~~~~~~~~~~~~~~
+      |                 |
+      |                 uint8_t * {aka unsigned char *}
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Src/movement.c: In function 'roll_unit_distance':
+../Src/movement.c:24:1: warning: control reaches end of non-void function [-Wreturn-type]
+   24 | }
+      | ^
+../Src/shape.c: In function 'shape_string':
+../Src/shape.c:40:15: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   40 |       sprintf((int8_t*)string, "Shape is a SPHERE, radius is %lu, location is %.2f \r\n", _shape->dimension_1, _shape->location);
+      |               ^~~~~~~~~~~~~~~
+      |               |
+      |               int8_t * {aka signed char *}
+In file included from ../Src/shape.c:3:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'int8_t *' {aka 'signed char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Src/shape.c:43:15: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   43 |       sprintf((int8_t*)string, "Shape is a CONE, radius is %lu, height is %lu, location is %.2f \r\n", _shape->dimension_1, _shape->dimension_2, _shape->location);
+      |               ^~~~~~~~~~~~~~~
+      |               |
+      |               int8_t * {aka signed char *}
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'int8_t *' {aka 'signed char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Src/shape.c:46:15: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   46 |       sprintf((int8_t*)string, "Shape is a CUBE, side length is %lu, location is %.2f \r\n", _shape->dimension_1, _shape->location);
+      |               ^~~~~~~~~~~~~~~
+      |               |
+      |               int8_t * {aka signed char *}
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'int8_t *' {aka 'signed char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+../Src/shape.c:49:15: warning: pointer targets in passing argument 1 of 'sprintf' differ in signedness [-Wpointer-sign]
+   49 |       sprintf((int8_t*)string, "Shape is a UNKNOWN, type is %lu, location is %.2f \r\n", _shape->type, _shape->location);
+      |               ^~~~~~~~~~~~~~~
+      |               |
+      |               int8_t * {aka signed char *}
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdio.h:250:18: note: expected 'char * restrict' but argument is of type 'int8_t *' {aka 'signed char *'}
+  250 | int     sprintf (char *__restrict, const char *__restrict, ...)
+      |                  ^
+arm-none-eabi-gcc -o "week6-modular-design.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX2700-2025/W06-UART-modular-design/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="week6-modular-design.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=soft -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/bin/../lib/gcc/arm-none-eabi/12.3.1/../../../../arm-none-eabi/bin/ld: warning: week6-modular-design.elf has a LOAD segment with RWX permissions
+Finished building target: week6-modular-design.elf
+ 
+arm-none-eabi-size  week6-modular-design.elf 
+arm-none-eabi-objdump -h -S week6-modular-design.elf  > "week6-modular-design.list"
+   text	   data	    bss	    dec	    hex	filename
+  18652	    504	   1904	  21060	   5244	week6-modular-design.elf
+Finished building: default.size.stdout
+ 
+Finished building: week6-modular-design.list
+ 
+
+15:20:10 Build Finished. 0 errors, 10 warnings. (took 495ms)
+
