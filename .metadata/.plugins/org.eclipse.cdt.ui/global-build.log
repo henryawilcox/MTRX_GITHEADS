@@ -3213,3 +3213,511 @@ arm-none-eabi-size  SerialInterface.elf
    4192	    376	   1896	   6464	   1940	SerialInterface.elf
 Finished building: default.size.stdout
  
+15:33:32 **** Clean-only build of configuration Debug for project SerialInterface ****
+make -j9 clean 
+rm -rf ./Startup/startup_stm32f303vctx.d ./Startup/startup_stm32f303vctx.o
+rm -rf ./Src/main.cyclo ./Src/main.d ./Src/main.o ./Src/main.su ./Src/serial.cyclo ./Src/serial.d ./Src/serial.o ./Src/serial.su ./Src/syscalls.cyclo ./Src/syscalls.d ./Src/syscalls.o ./Src/syscalls.su ./Src/sysmem.cyclo ./Src/sysmem.d ./Src/sysmem.o ./Src/sysmem.su
+rm -rf SerialInterface.elf SerialInterface.list SerialInterface.map default.size.stdout
+ 
+15:33:32 **** Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303vctx.d" -MT"Startup/startup_stm32f303vctx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303vctx.o" "../Startup/startup_stm32f303vctx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4192	    376	   1896	   6464	   1940	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+15:35:46 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-size  SerialInterface.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4192	    376	   1896	   6464	   1940	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+16:20:34 **** Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -c -x assembler-with-cpp -MMD -MP -MF"Startup/startup_stm32f303vctx.d" -MT"Startup/startup_stm32f303vctx.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Startup/startup_stm32f303vctx.o" "../Startup/startup_stm32f303vctx.s"
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
+arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
+../Src/serial_interrupt.c:9:10: fatal error: serial_interrupts.h: No such file or directory
+    9 | #include "serial_interrupts.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+make: *** Waiting for unfinished jobs....
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:21:00 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/serial_interrupt.c:9:10: fatal error: serial_interrupts.h: No such file or directory
+    9 | #include "serial_interrupts.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:21:56 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/serial_interrupt.c:9:10: fatal error: serial_interrupts.h: No such file or directory
+    9 | #include "serial_interrupts.h"
+      |          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:22:51 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:58:41: error: expected ';' before 'for'
+   58 |     EnableSerialInterrupts(&USART1_PORT)
+      |                                         ^
+      |                                         ;
+......
+   61 |     for(;;) {
+      |     ~~~                                  
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+../Src/serial_interrupt.c: In function 'USART1_IRQHandler':
+../Src/serial_interrupt.c:63:49: error: 'serial_port' undeclared (first use in this function); did you mean 'SerialPort'?
+   63 |                 USART1_PORT.completion_function(serial_port->rx_buffer, (uint8_t)rx_index);
+      |                                                 ^~~~~~~~~~~
+      |                                                 SerialPort
+../Src/serial_interrupt.c:63:49: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:31: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:23:26 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:58:41: error: expected ';' before 'for'
+   58 |     EnableSerialInterrupts(&USART1_PORT)
+      |                                         ^
+      |                                         ;
+......
+   61 |     for(;;) {
+      |     ~~~                                  
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+make: *** [Src/subdir.mk:31: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:23:37 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:58:41: error: expected ';' before 'for'
+   58 |     EnableSerialInterrupts(&USART1_PORT)
+      |                                         ^
+      |                                         ;
+......
+   61 |     for(;;) {
+      |     ~~~                                  
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+make: *** [Src/subdir.mk:31: Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:23:53 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+make: *** [Src/subdir.mk:31: Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:24:22 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+make: *** [Src/subdir.mk:31: Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:24:34 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+make: *** [Src/subdir.mk:31: Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:25:54 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4148	    376	   1896	   6420	   1914	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:26:01 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4148	    376	   1896	   6420	   1914	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:33:29 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/serial_interrupt.c: In function 'USART1_IRQHandler':
+../Src/serial_interrupt.c:64:17: error: 'string_complete' undeclared (first use in this function)
+   64 |                 string_complete = 1;
+      |                 ^~~~~~~~~~~~~~~
+../Src/serial_interrupt.c:64:17: note: each undeclared identifier is reported only once for each function it appears in
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:33:56 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4168	    376	   1904	   6448	   1930	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:34:21 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4168	    376	   1904	   6448	   1930	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+16:34:25 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4168	    376	   1904	   6448	   1930	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+16:41:10 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4168	    376	   1904	   6448	   1930	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:44:16 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/serial_interrupt.c:76:1: error: expected identifier or '(' before '}' token
+   76 | }
+      | ^
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:44:38 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4168	    376	   1904	   6448	   1930	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:47:52 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:50:55 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:51:59 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+16:56:42 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/serial_interrupt.c: In function 'USART1_IRQHandler':
+../Src/serial_interrupt.c:70:56: error: 'NULL' undeclared (first use in this function)
+   70 |                 if (USART1_PORT.completion_function != NULL) {
+      |                                                        ^~~~
+../Src/serial_interrupt.c:12:1: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+   11 | #include "stm32f303xc.h"
+  +++ |+#include <stddef.h>
+   12 | 
+../Src/serial_interrupt.c:70:56: note: each undeclared identifier is reported only once for each function it appears in
+   70 |                 if (USART1_PORT.completion_function != NULL) {
+      |                                                        ^~~~
+make: *** [Src/subdir.mk:31: Src/serial_interrupt.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+16:57:05 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+16:58:15 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+17:17:10 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/serial_interrupt.c: In function 'USART1_IRQHandler':
+../Src/serial_interrupt.c:88:53: warning: passing argument 1 of 'USART1_PORT.completion_function' makes pointer from integer without a cast [-Wint-conversion]
+   88 |                     USART1_PORT.completion_function(length, (uint8_t *)processing_buffer);
+      |                                                     ^~~~~~
+      |                                                     |
+      |                                                     uint8_t {aka unsigned char}
+../Src/serial_interrupt.c:88:53: note: expected 'uint8_t *' {aka 'unsigned char *'} but argument is of type 'uint8_t' {aka 'unsigned char'}
+../Src/serial_interrupt.c:88:61: warning: passing argument 2 of 'USART1_PORT.completion_function' makes integer from pointer without a cast [-Wint-conversion]
+   88 |                     USART1_PORT.completion_function(length, (uint8_t *)processing_buffer);
+      |                                                             ^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                                             |
+      |                                                             uint8_t * {aka unsigned char *}
+../Src/serial_interrupt.c:88:61: note: expected 'uint8_t' {aka 'unsigned char'} but argument is of type 'uint8_t *' {aka 'unsigned char *'}
+../Src/main.c: In function 'main':
+../Src/main.c:56:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   56 |     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t,  uint8_t *) {aka void (*)(unsigned char,  unsigned char *)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint8_t *, uint8_t)' {aka 'void (*)(unsigned char *, unsigned char)'} but argument is of type 'void (*)(uint8_t,  uint8_t *)' {aka 'void (*)(unsigned char,  unsigned char *)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint8_t length));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4352	    376	   2416	   7144	   1be8	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+17:19:36 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 
+17:21:23 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+17:22:39 **** Build of configuration Debug for project DigitalIO ****
+make -j9 all 
+arm-none-eabi-size  DigitalIO.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1176	      0	   1576	   2752	    ac0	DigitalIO.elf
+Finished building: default.size.stdout
+ 
+17:22:58 **** Incremental Build of configuration Debug for project DigitalIO ****
+make -j9 all 
+arm-none-eabi-size  DigitalIO.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1176	      0	   1576	   2752	    ac0	DigitalIO.elf
+Finished building: default.size.stdout
+ 
+17:23:02 **** Incremental Build of configuration Debug for project DigitalIO ****
+make -j9 all 
+arm-none-eabi-size  DigitalIO.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1176	      0	   1576	   2752	    ac0	DigitalIO.elf
+Finished building: default.size.stdout
+ 
+17:23:35 **** Incremental Build of configuration Debug for project DigitalIO ****
+make -j9 all 
+arm-none-eabi-size  DigitalIO.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1176	      0	   1576	   2752	    ac0	DigitalIO.elf
+Finished building: default.size.stdout
+ 
+17:23:56 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4180	    376	   1904	   6460	   193c	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+17:29:40 **** Incremental Build of configuration Debug for project SerialInterfaceIRQ ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial_interrupt.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial_interrupt.d" -MT"Src/serial_interrupt.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial_interrupt.o"
+../Src/main.c:28:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   28 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterfaceIRQ.elf
+ 
+arm-none-eabi-size  SerialInterfaceIRQ.elf 
+arm-none-eabi-objdump -h -S SerialInterfaceIRQ.elf  > "SerialInterfaceIRQ.list"
+   text	   data	    bss	    dec	    hex	filename
+   4344	    376	   1904	   6624	   19e0	SerialInterfaceIRQ.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterfaceIRQ.list
+ 

@@ -1,4 +1,4 @@
-12:47:42 **** Incremental Build of configuration Debug for project SerialInterface ****
+15:35:46 **** Incremental Build of configuration Debug for project SerialInterface ****
 make -j9 all 
 arm-none-eabi-size  SerialInterface.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  SerialInterface.elf
 Finished building: default.size.stdout
  
 
-12:47:43 Build Finished. 0 errors, 0 warnings. (took 550ms)
+15:35:46 Build Finished. 0 errors, 0 warnings. (took 321ms)
 

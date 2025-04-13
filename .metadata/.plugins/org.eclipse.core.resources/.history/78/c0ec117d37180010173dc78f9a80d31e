@@ -1,0 +1,102 @@
+/*
+ * serial_interrupt.c - Improved receive interrupt handler
+ */
+
+#include "serial.h"
+#include "serial_interrupt.h"
+#include "stm32f303xc.h"
+
+// Buffer definitions
+#define RX_BUFFER_SIZE 256
+
+// Receiving buffers for double buffer interrupt function
+volatile uint8_t buffer1[RX_BUFFER_SIZE];
+volatile uint8_t buffer2[RX_BUFFER_SIZE];
+
+// Variables to switch buffers in double buffer implementation
+volatile uint8_t *active_buffer = buffer1;
+volatile uint8_t *processing_buffer = buffer2;
+volatile uint8_t processing_flag = 0;
+volatile uint8_t rx_index = 0;
+
+void EnableSerialInterrupts(SerialPort *serial_port) {
+    // Disable interrupts while setting up
+    __disable_irq();
+
+    rx_index = 0;
+    processing_flag = 0;
+
+    // Clear buffers
+    for (int i = 0; i < RX_BUFFER_SIZE; i++) {
+        buffer1[i] = 0;
+        buffer2[i] = 0;
+    }
+
+    // Clear any pending interrupts
+    serial_port->UART->ICR = 0xFFFFFFFF;
+
+    // Enable RXNE interrupt
+    serial_port->UART->CR1 |= USART_CR1_RXNEIE;
+
+    // Enable the USART1 interrupt in NVIC
+    NVIC_EnableIRQ(USART1_IRQn);
+    NVIC_SetPriority(USART1_IRQn, 0);
+
+    // Re-enable interrupts
+    __enable_irq();
+}
+
+// USART1 interrupt handler
+void USART1_IRQHandler(void) {
+    // Check if we received data
+    if (USART1_PORT.UART->ISR & USART_ISR_RXNE) {
+        // Read received data
+        char received_byte = USART1_PORT.UART->RDR;
+
+        // Echo the character back (helpful for testing)
+        SerialOutputChar(received_byte, &USART1_PORT);
+
+        // Check for overrun or framing error
+        if (USART1_PORT.UART->ISR & (USART_ISR_ORE | USART_ISR_FE)) {
+            USART1_PORT.UART->ICR |= USART_ICR_ORECF | USART_ICR_FECF;
+        }
+
+        // Store byte into active buffer if not filled
+        if (rx_index < RX_BUFFER_SIZE - 1) {
+            active_buffer[rx_index++] = received_byte;
+
+            // Check if terminating character received
+            if (received_byte == '\r') {
+                // Null-terminate the string
+                active_buffer[rx_index] = '\0';
+
+                // If not currently processing, swap buffers and process
+                if (processing_flag == 0) {
+                    // Swap buffers
+                    volatile uint8_t *temp = active_buffer;
+                    active_buffer = processing_buffer;
+                    processing_buffer = temp;
+
+                    // Save length before resetting index
+                    uint8_t length = rx_index;
+                    rx_index = 0;
+
+                    // Set processing flag
+                    processing_flag = 1;
+
+                    // Call the completion callback with the filled buffer
+                    USART1_PORT.completion_function(length, (uint8_t *)processing_buffer);
+
+                    // Reset processing flag
+                    processing_flag = 0;
+                } else {
+                    // Can't process now, reset buffer
+                    rx_index = 0;
+                }
+            }
+        } else {
+            // Buffer overflow - reset
+            rx_index = 0;
+        }
+    }
+}

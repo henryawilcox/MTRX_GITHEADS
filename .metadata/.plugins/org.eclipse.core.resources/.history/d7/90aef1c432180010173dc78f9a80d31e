@@ -1,0 +1,77 @@
+/*
+ * serial_interrupt.c
+ *
+ *  Created on: Apr 13, 2025
+ *      Author: henrywilcox
+ */
+
+#include "serial.h"
+#include "serial_interrupt.h"
+
+#include "stm32f303xc.h"
+
+// Flag to indicate if a complete string has been received
+volatile uint8_t string_recieved = 0;
+// Global index for storing characters in the buffer
+volatile uint16_t rx_index = 0;
+
+
+
+void EnableSerialInterrupts(SerialPort *serial_port) {
+    // Disable interrupts while setting up
+    __disable_irq();
+
+
+    rx_index = 0;
+    string_recieved = 0;
+    // Reset buffer
+        for (int i = 0; i < BUFFER_SIZE; i++) {
+               serial_port->rx_buffer[i] = 0;
+           }
+
+    // Enable RXNE interrupt
+    serial_port->UART->CR1 |= USART_CR1_RXNEIE;
+
+    // Enable the USART1 interrupt in NVIC (assuming USART1)
+    NVIC_EnableIRQ(USART1_IRQn);
+    NVIC_SetPriority(USART1_IRQn, 0);
+
+    // Re-enable interrupts
+    __enable_irq();
+}
+
+// USART1 interrupt handler
+void USART1_IRQHandler(void) {
+    // Check if we received data
+    if (USART1_PORT.UART->ISR & USART_ISR_RXNE) {
+        // Read the received data
+        uint8_t received_char = USART1_PORT.UART->RDR;  // Was using USART1->RDR directly
+
+        // Check for overrun or framing error
+        if (USART1_PORT.UART->ISR & (USART_ISR_ORE | USART_ISR_FE)) {
+            USART1_PORT.UART->ICR |= USART_ICR_ORECF | USART_ICR_FECF;
+        }
+
+        // Store the character if there's space in the buffer
+        if (rx_index < BUFFER_SIZE - 1) {
+            // Store character in buffer
+            USART1_PORT.rx_buffer[rx_index++] = received_char;
+
+            // Check if terminating character received
+            if (received_char == '\r') {
+                // Null-terminate the string
+                USART1_PORT.rx_buffer[rx_index] = '\0';
+                string_recieved = 1;
+
+                // Call the completion function if a terminating character was received
+                    USART1_PORT.completion_function(USART1_PORT.rx_buffer, rx_index);
+                    rx_index = 0;  // Reset index after processing
+                }
+            }
+        } else {
+            // Buffer overflow - reset
+            rx_index = 0;
+        }
+    }
+}
+

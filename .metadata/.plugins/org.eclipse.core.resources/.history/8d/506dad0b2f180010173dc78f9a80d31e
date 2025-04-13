@@ -1,0 +1,41 @@
+/*
+ * serial_interrupt.c
+ *
+ *  Created on: Apr 13, 2025
+ *      Author: henrywilcox
+ */
+
+#include "serial.h"
+#include "serial_interrupts.h"
+
+#include "stm32f303xc.h"
+
+void EnableSerialInterrupts(SerialPort *serial_port) {
+    // Disable interrupts while setting up
+    __disable_irq();
+
+    // Enable RXNE interrupt
+    serial_port->UART->CR1 |= USART_CR1_RXNEIE;
+
+    // Enable the USART1 interrupt in NVIC (assuming USART1)
+    NVIC_EnableIRQ(USART1_IRQn);
+    NVIC_SetPriority(USART1_IRQn, 0);
+
+    // Re-enable interrupts
+    __enable_irq();
+}
+
+// USART1 interrupt handler
+void USART1_IRQHandler(SerialPort *serial_port) {
+    // Check if we received data
+
+    if (USART1->ISR & USART_ISR_RXNE) {
+
+        SerialInputString(SerialPort *serial_port);
+
+            }
+         else {
+            // Buffer overflow - reset
+           index = 0;
+        }
+    }

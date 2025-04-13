@@ -1,8 +1,9 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=macosx
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:DigitalIO,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TimerInterface Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:SerialInterface Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:TimerInterface Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:SerialInterface Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:DigitalIO,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:SerialInterfaceIRQ Debug
 eclipse.preferences.version=1
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:DigitalIO/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:DigitalIO/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:SerialInterface\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:SerialInterfaceIRQ\ Debug/activeLaunchMode=debug
