@@ -2533,3 +2533,683 @@ arm-none-eabi-size  SerialInterface.elf
    4244	    376	   1896	   6516	   1974	SerialInterface.elf
 Finished building: default.size.stdout
  
+12:15:24 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:55:57: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   55 |             SerialInitialise(BAUD_115200, &USART1_PORT, &CompletionCallback);
+      |                                                         ^~~~~~~~~~~~~~~~~~~
+      |                                                         |
+      |                                                         void (*)(uint8_t *, uint16_t) {aka void (*)(unsigned char *, short unsigned int)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} but argument is of type 'void (*)(uint8_t *, uint16_t)' {aka 'void (*)(unsigned char *, short unsigned int)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:65:49: error: 'terminator' undeclared (first use in this function)
+   65 |                 SerialInputString(&USART1_PORT, terminator, size, increase);
+      |                                                 ^~~~~~~~~~
+../Src/main.c:65:49: note: each undeclared identifier is reported only once for each function it appears in
+../Src/main.c:65:61: error: 'size' undeclared (first use in this function); did you mean 'size_t'?
+   65 |                 SerialInputString(&USART1_PORT, terminator, size, increase);
+      |                                                             ^~~~
+      |                                                             size_t
+../Src/main.c:65:67: error: 'increase' undeclared (first use in this function)
+   65 |                 SerialInputString(&USART1_PORT, terminator, size, increase);
+      |                                                                   ^~~~~~~~
+../Src/main.c:65:17: error: too many arguments to function 'SerialInputString'
+   65 |                 SerialInputString(&USART1_PORT, terminator, size, increase);
+      |                 ^~~~~~~~~~~~~~~~~
+../Inc/serial.h:27:10: note: declared here
+   27 | uint16_t SerialInputString(SerialPort *serial_port);
+      |          ^~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:28: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+12:16:51 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:54:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   54 |     SerialInitialise(BAUD_115200, &USART1_PORT, &CompletionCallback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t *, uint16_t) {aka void (*)(unsigned char *, short unsigned int)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} but argument is of type 'void (*)(uint8_t *, uint16_t)' {aka 'void (*)(unsigned char *, short unsigned int)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'CompletionCallback':
+../Src/main.c:44:43: warning: ' characters ||
+   ' directive writing 16 bytes into a region of size between 12 and 16 [-Wformat-overflow=]
+   44 |     sprintf(length_str, " || String has %d characters ||\r\n", length); // Convert length to string
+      |                                           ^~~~~~~~~~~~~~~~~~
+../Src/main.c:44:5: note: 'sprintf' output between 33 and 37 bytes into a destination of size 32
+   44 |     sprintf(length_str, " || String has %d characters ||\r\n", length); // Convert length to string
+      |     ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4188	    376	   1896	   6460	   193c	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:17:58 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-size  SerialInterface.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4188	    376	   1896	   6460	   193c	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+12:18:56 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:51:18: warning: unused variable 'chars_read' [-Wunused-variable]
+   51 |         uint16_t chars_read = SerialInputString(&USART1_PORT);
+      |                  ^~~~~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   1584	    296	   1568	   3448	    d78	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:24:43 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:69:17: warning: unused variable 'chars_read' [-Wunused-variable]
+   69 |         uint8_t chars_read = SerialInputString(&USART1_PORT);
+      |                 ^~~~~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   1532	    296	   1568	   3396	    d44	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:26:12 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:60:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   60 |     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t,  SerialPort *) {aka void (*)(unsigned char,  struct _SerialPort *)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} but argument is of type 'void (*)(uint8_t,  SerialPort *)' {aka 'void (*)(unsigned char,  struct _SerialPort *)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:69:17: warning: unused variable 'chars_read' [-Wunused-variable]
+   69 |         uint8_t chars_read = SerialInputString(&USART1_PORT);
+      |                 ^~~~~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4204	    376	   1896	   6476	   194c	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:29:17 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'completion_callback':
+../Src/main.c:63:5: warning: 'main' is normally a non-static function [-Wmain]
+   63 | int main(void)
+      |     ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:66:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   66 |     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t,  SerialPort *) {aka void (*)(unsigned char,  struct _SerialPort *)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} but argument is of type 'void (*)(uint8_t,  SerialPort *)' {aka 'void (*)(unsigned char,  struct _SerialPort *)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c:75:17: warning: unused variable 'chars_read' [-Wunused-variable]
+   75 |         uint8_t chars_read = SerialInputString(&USART1_PORT);
+      |                 ^~~~~~~~~~
+../Src/main.c: In function 'completion_callback':
+../Src/main.c:78:1: error: expected declaration or statement at end of input
+   78 | }
+      | ^
+../Src/main.c:42:31: warning: unused variable 'test' [-Wunused-variable]
+   42 |             volatile uint32_t test = 0;
+      |                               ^~~~
+../Src/main.c: At top level:
+../Src/main.c:63:5: warning: 'main' defined but not used [-Wunused-function]
+   63 | int main(void)
+      |     ^~~~
+make: *** [Src/subdir.mk:28: Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+12:30:57 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'completion_callback':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/main.c: In function 'main':
+../Src/main.c:57:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   57 |     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t,  SerialPort *) {aka void (*)(unsigned char,  struct _SerialPort *)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} but argument is of type 'void (*)(uint8_t,  SerialPort *)' {aka 'void (*)(unsigned char,  struct _SerialPort *)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4224	    376	   1896	   6496	   1960	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:36:53 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/serial.c:32:6: error: conflicting types for 'SerialInitialise'; have 'void(BaudRate,  SerialPort *, void (*)(uint8_t *, uint32_t))' {aka 'void(BaudRate,  struct _SerialPort *, void (*)(unsigned char *, long unsigned int))'}
+   32 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint32_t length)) {
+      |      ^~~~~~~~~~~~~~~~
+../Src/main.c: In function 'main':
+../Src/main.c:51:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   51 |     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t *, uint8_t) {aka void (*)(unsigned char *, unsigned char)}
+In file included from ../Src/serial.c:1:
+../Inc/serial.h:23:6: note: previous declaration of 'SerialInitialise' with type 'void(BaudRate,  SerialPort *, void (*)(uint32_t))' {aka 'void(BaudRate,  struct _SerialPort *, void (*)(long unsigned int))'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |      ^~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:34:20: error: 'SerialPort' {aka 'struct _SerialPort'} has no member named 'completion_callback'
+   34 |         serial_port->completion_callback = callback; //callback to function
+      |                    ^~
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint32_t)' {aka 'void (*)(long unsigned int)'} but argument is of type 'void (*)(uint8_t *, uint8_t)' {aka 'void (*)(unsigned char *, unsigned char)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+12:38:10 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:15:1: error: variable 'USART1_PORT' has initializer but incomplete type
+   15 | SerialPort USART1_PORT = {USART1,
+      | ^~~~~~~~~~
+../Src/serial.c:15:12: error: declaration of 'USART1_PORT' with no linkage follows extern declaration
+   15 | SerialPort USART1_PORT = {USART1,
+      |            ^~~~~~~~~~~
+In file included from ../Src/serial.c:1:
+../Inc/serial.h:46:19: note: previous declaration of 'USART1_PORT' with type 'SerialPort' {aka 'struct _SerialPort'}
+   46 | extern SerialPort USART1_PORT;
+      |                   ^~~~~~~~~~~
+../Src/main.c: In function 'SerialInitialise':
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c:49:5: warning: 'main' is normally a non-static function [-Wmain]
+   49 | int main(void) {
+      |     ^~~~
+In file included from ../Inc/serial.h:5:
+../Inc/stm32f303xc.h:850:29: warning: excess elements in struct initializer
+  850 | #define USART1              ((USART_TypeDef *) USART1_BASE)
+      |                             ^
+../Src/serial.c:15:27: note: in expansion of macro 'USART1'
+   15 | SerialPort USART1_PORT = {USART1,
+      |                           ^~~~~~
+../Inc/stm32f303xc.h:850:29: note: (near initialization for 'USART1_PORT')
+  850 | #define USART1              ((USART_TypeDef *) USART1_BASE)
+      |                             ^
+../Src/serial.c:15:27: note: in expansion of macro 'USART1'
+   15 | SerialPort USART1_PORT = {USART1,
+      |                           ^~~~~~
+../Src/main.c: In function 'main':
+../Inc/stm32f303xc.h:876:29: warning: excess elements in struct initializer
+  876 | #define GPIOC               ((GPIO_TypeDef *) GPIOC_BASE)
+      |                             ^
+../Src/serial.c:16:17: note: in expansion of macro 'GPIOC'
+   16 |                 GPIOC,
+      |                 ^~~~~
+../Inc/stm32f303xc.h:876:29: note: (near initialization for 'USART1_PORT')
+  876 | #define GPIOC               ((GPIO_TypeDef *) GPIOC_BASE)
+      |                             ^
+../Src/serial.c:16:17: note: in expansion of macro 'GPIOC'
+   16 |                 GPIOC,
+      |                 ^~~~~
+../Src/main.c:51:49: warning: passing argument 3 of 'SerialInitialise' from incompatible pointer type [-Wincompatible-pointer-types]
+   51 |     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
+      |                                                 ^~~~~~~~~~~~~~~~~~~~
+      |                                                 |
+      |                                                 void (*)(uint8_t *, uint8_t) {aka void (*)(unsigned char *, unsigned char)}
+In file included from ../Src/main.c:23:
+../Inc/serial.h:23:74: note: expected 'void (*)(uint8_t *, uint32_t)' {aka 'void (*)(unsigned char *, long unsigned int)'} but argument is of type 'void (*)(uint8_t *, uint8_t)' {aka 'void (*)(unsigned char *, unsigned char)'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint32_t length)) {
+      |                                                                   ~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+../Src/main.c: In function 'SerialInitialise':
+../Src/main.c:63:1: error: expected declaration or statement at end of input
+   63 | }
+      | ^
+../Inc/stm32f303xc.h:9541:50: warning: excess elements in struct initializer
+ 9541 | #define RCC_APB2ENR_USART1EN_Msk                 (0x1UL << RCC_APB2ENR_USART1EN_Pos) /*!< 0x00004000 */
+      |                                                  ^
+../Inc/stm32f303xc.h:9542:50: note: in expansion of macro 'RCC_APB2ENR_USART1EN_Msk'
+ 9542 | #define RCC_APB2ENR_USART1EN                     RCC_APB2ENR_USART1EN_Msk      /*!< USART1 clock enable */
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/serial.c:17:17: note: in expansion of macro 'RCC_APB2ENR_USART1EN'
+   17 |                 RCC_APB2ENR_USART1EN, // bit to enable for APB2 bus
+      |                 ^~~~~~~~~~~~~~~~~~~~
+../Inc/stm32f303xc.h:9541:50: note: (near initialization for 'USART1_PORT')
+ 9541 | #define RCC_APB2ENR_USART1EN_Msk                 (0x1UL << RCC_APB2ENR_USART1EN_Pos) /*!< 0x00004000 */
+      |                                                  ^
+../Inc/stm32f303xc.h:9542:50: note: in expansion of macro 'RCC_APB2ENR_USART1EN_Msk'
+ 9542 | #define RCC_APB2ENR_USART1EN                     RCC_APB2ENR_USART1EN_Msk      /*!< USART1 clock enable */
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~~~
+../Src/serial.c:17:17: note: in expansion of macro 'RCC_APB2ENR_USART1EN'
+   17 |                 RCC_APB2ENR_USART1EN, // bit to enable for APB2 bus
+      |                 ^~~~~~~~~~~~~~~~~~~~
+../Src/serial.c:18:17: warning: excess elements in struct initializer
+   18 |                 0x00,   // bit to enable for APB1 bus
+      |                 ^~~~
+../Src/serial.c:18:17: note: (near initialization for 'USART1_PORT')
+../Inc/stm32f303xc.h:9506:50: warning: excess elements in struct initializer
+ 9506 | #define RCC_AHBENR_GPIOCEN_Msk                   (0x1UL << RCC_AHBENR_GPIOCEN_Pos) /*!< 0x00080000 */
+      |                                                  ^
+../Inc/stm32f303xc.h:9507:50: note: in expansion of macro 'RCC_AHBENR_GPIOCEN_Msk'
+ 9507 | #define RCC_AHBENR_GPIOCEN                       RCC_AHBENR_GPIOCEN_Msk        /*!< GPIOC clock enable */
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/serial.c:19:17: note: in expansion of macro 'RCC_AHBENR_GPIOCEN'
+   19 |                 RCC_AHBENR_GPIOCEN, // bit to enable for AHB bus
+      |                 ^~~~~~~~~~~~~~~~~~
+../Inc/stm32f303xc.h:9506:50: note: (near initialization for 'USART1_PORT')
+ 9506 | #define RCC_AHBENR_GPIOCEN_Msk                   (0x1UL << RCC_AHBENR_GPIOCEN_Pos) /*!< 0x00080000 */
+      |                                                  ^
+../Inc/stm32f303xc.h:9507:50: note: in expansion of macro 'RCC_AHBENR_GPIOCEN_Msk'
+ 9507 | #define RCC_AHBENR_GPIOCEN                       RCC_AHBENR_GPIOCEN_Msk        /*!< GPIOC clock enable */
+      |                                                  ^~~~~~~~~~~~~~~~~~~~~~
+../Src/serial.c:19:17: note: in expansion of macro 'RCC_AHBENR_GPIOCEN'
+   19 |                 RCC_AHBENR_GPIOCEN, // bit to enable for AHB bus
+      |                 ^~~~~~~~~~~~~~~~~~
+../Src/serial.c:20:17: warning: excess elements in struct initializer
+   20 |                 0xA00,
+      |                 ^~~~~
+../Src/serial.c:20:17: note: (near initialization for 'USART1_PORT')
+../Src/serial.c:21:17: warning: excess elements in struct initializer
+   21 |                 0xF00,
+      |                 ^~~~~
+../Src/serial.c:21:17: note: (near initialization for 'USART1_PORT')
+../Src/serial.c:22:17: warning: excess elements in struct initializer
+   22 |                 0x770000,  // for USART1 PC10 and 11, this is in the AFR low register
+      |                 ^~~~~~~~
+../Src/serial.c:22:17: note: (near initialization for 'USART1_PORT')
+../Src/serial.c:23:17: warning: excess elements in struct initializer
+   23 |                 0x00, // no change to the high alternate function register
+      |                 ^~~~
+../Src/serial.c:23:17: note: (near initialization for 'USART1_PORT')
+../Src/serial.c:24:17: warning: excess elements in struct initializer
+   24 |                 0x00, //buffer intialised at 0
+      |                 ^~~~
+../Src/serial.c:24:17: note: (near initialization for 'USART1_PORT')
+../Src/serial.c:25:17: warning: excess elements in struct initializer
+   25 |                 0x00 // default function pointer is NULL
+      |                 ^~~~
+../Src/serial.c:25:17: note: (near initialization for 'USART1_PORT')
+../Src/serial.c:15:12: error: storage size of 'USART1_PORT' isn't known
+   15 | SerialPort USART1_PORT = {USART1,
+      |            ^~~~~~~~~~~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:34:20: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   34 |         serial_port->completion_function = callback; //callback to function
+      |                    ^~
+../Src/serial.c:43:31: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   43 |     RCC->AHBENR |= serial_port->MaskAHBENR;
+      |                               ^~
+../Src/serial.c:46:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   46 |     serial_port->GPIO->MODER = serial_port->SerialPinModeValue;
+      |                ^~
+../Src/serial.c:46:43: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   46 |     serial_port->GPIO->MODER = serial_port->SerialPinModeValue;
+      |                                           ^~
+../Src/serial.c:49:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   49 |     serial_port->GPIO->OSPEEDR = serial_port->SerialPinSpeedValue;
+      |                ^~
+../Src/serial.c:49:45: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   49 |     serial_port->GPIO->OSPEEDR = serial_port->SerialPinSpeedValue;
+      |                                             ^~
+../Src/serial.c:52:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   52 |     serial_port->GPIO->AFR[0] |= serial_port->SerialPinAlternatePinValueLow;
+      |                ^~
+../Src/serial.c:52:45: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   52 |     serial_port->GPIO->AFR[0] |= serial_port->SerialPinAlternatePinValueLow;
+      |                                             ^~
+../Src/serial.c:53:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   53 |     serial_port->GPIO->AFR[1] |= serial_port->SerialPinAlternatePinValueHigh;
+      |                ^~
+../Src/serial.c:53:45: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   53 |     serial_port->GPIO->AFR[1] |= serial_port->SerialPinAlternatePinValueHigh;
+      |                                             ^~
+../Src/serial.c:56:32: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   56 |     RCC->APB1ENR |= serial_port->MaskAPB1ENR;
+      |                                ^~
+../Src/serial.c:57:32: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   57 |     RCC->APB2ENR |= serial_port->MaskAPB2ENR;
+      |                                ^~
+../Src/serial.c:60:57: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   60 |     uint16_t *baud_rate_config = (uint16_t*)&serial_port->UART->BRR; // only 16 bits used!
+      |                                                         ^~
+../Src/serial.c:82:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   82 |     serial_port->UART->CR1 |= USART_CR1_TE | USART_CR1_RE | USART_CR1_UE;
+      |                ^~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:85:6: error: static declaration of 'SerialOutputChar' follows non-static declaration
+   85 | void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~
+../Inc/serial.h:25:6: note: previous declaration of 'SerialOutputChar' with type 'void(uint8_t,  SerialPort *)' {aka 'void(unsigned char,  struct _SerialPort *)'}
+   25 | void SerialOutputChar(uint8_t data, SerialPort *serial_port);
+      |      ^~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialOutputChar':
+../Src/serial.c:87:23: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   87 |     while((serial_port->UART->ISR & USART_ISR_TXE) == 0) {
+      |                       ^~
+../Src/serial.c:92:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+   92 |     serial_port->UART->TDR = data;
+      |                ^~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:95:6: error: static declaration of 'SerialOutputString' follows non-static declaration
+   95 | void SerialOutputString(uint8_t *pt, SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Inc/serial.h:26:6: note: previous declaration of 'SerialOutputString' with type 'void(uint8_t *, SerialPort *)' {aka 'void(unsigned char *, struct _SerialPort *)'}
+   26 | void SerialOutputString(uint8_t *pt, SerialPort *serial_port);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialOutputString':
+../Src/serial.c:104:17: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  104 |      serial_port->completion_function(counter);
+      |                 ^~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:109:9: error: static declaration of 'SerialReceiveChar' follows non-static declaration
+  109 | uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char) {
+      |         ^~~~~~~~~~~~~~~~~
+../Inc/serial.h:27:9: note: previous declaration of 'SerialReceiveChar' with type 'uint8_t(SerialPort *, uint8_t *)' {aka 'unsigned char(struct _SerialPort *, unsigned char *)'}
+   27 | uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char);
+      |         ^~~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialReceiveChar':
+../Src/serial.c:118:24: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  118 |         if (serial_port->UART->ISR & USART_ISR_ORE || serial_port->UART->ISR & USART_ISR_FE) {
+      |                        ^~
+../Src/serial.c:118:66: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  118 |         if (serial_port->UART->ISR & USART_ISR_ORE || serial_port->UART->ISR & USART_ISR_FE) {
+      |                                                                  ^~
+../Src/serial.c:119:24: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  119 |             serial_port->UART->ICR |= USART_ICR_ORECF | USART_ICR_FECF;
+      |                        ^~
+../Src/serial.c:123:24: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  123 |         if (serial_port->UART->ISR & USART_ISR_RXNE) {
+      |                        ^~
+../Src/serial.c:129:33: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  129 |     *received_char = serial_port->UART->RDR;
+      |                                 ^~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:134:10: error: static declaration of 'SerialInputString' follows non-static declaration
+  134 | uint16_t SerialInputString(SerialPort *serial_port) {
+      |          ^~~~~~~~~~~~~~~~~
+../Inc/serial.h:28:10: note: previous declaration of 'SerialInputString' with type 'uint16_t(SerialPort *)' {aka 'short unsigned int(struct _SerialPort *)'}
+   28 | uint16_t SerialInputString(SerialPort *serial_port);
+      |          ^~~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialInputString':
+../Src/serial.c:140:20: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  140 |         serial_port->rx_buffer[i] = 0;
+      |                    ^~
+../Src/serial.c:149:24: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  149 |             serial_port->rx_buffer[index++] = receivedChar;
+      |                        ^~
+../Src/serial.c:159:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  159 |     serial_port->rx_buffer[index] = '\0';
+      |                ^~
+../Src/serial.c:162:16: error: invalid use of incomplete typedef 'SerialPort' {aka 'struct _SerialPort'}
+  162 |     serial_port->completion_function(index);
+      |                ^~
+../Src/serial.c: In function 'SerialInitialise':
+../Src/serial.c:166:1: error: expected declaration or statement at end of input
+  166 | }
+      | ^
+../Src/serial.c:15:12: warning: unused variable 'USART1_PORT' [-Wunused-variable]
+   15 | SerialPort USART1_PORT = {USART1,
+      |            ^~~~~~~~~~~
+../Src/main.c: At top level:
+../Src/main.c:49:5: warning: 'main' defined but not used [-Wunused-function]
+   49 | int main(void) {
+      |     ^~~~
+../Src/serial.c: At top level:
+../Src/serial.c:134:10: warning: 'SerialInputString' defined but not used [-Wunused-function]
+  134 | uint16_t SerialInputString(SerialPort *serial_port) {
+      |          ^~~~~~~~~~~~~~~~~
+../Src/serial.c:95:6: warning: 'SerialOutputString' defined but not used [-Wunused-function]
+   95 | void SerialOutputString(uint8_t *pt, SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/serial.c:32:6: warning: 'SerialInitialise' defined but not used [-Wunused-function]
+   32 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint32_t length)) {
+      |      ^~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:28: Src/main.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+12:42:51 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/serial.c: In function 'SerialInputString':
+../Src/serial.c:158:76: error: expected ')' before 'return'
+  158 |     serial_port->completion_function(serial_port->rx_buffer, (uint8_t)index
+      |                                     ~                                      ^
+      |                                                                            )
+......
+  161 |     return index;
+      |     ~~~~~~                                                                  
+../Src/serial.c:161:18: error: expected ';' before '}' token
+  161 |     return index;
+      |                  ^
+      |                  ;
+  162 | }
+      | ~                 
+../Src/serial.c:162:1: warning: control reaches end of non-void function [-Wreturn-type]
+  162 | }
+      | ^
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+12:43:37 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/serial.c: In function 'SerialInputString':
+../Src/serial.c:158:77: error: expected ';' before 'return'
+  158 |     serial_port->completion_function(serial_port->rx_buffer, (uint8_t)index)
+      |                                                                             ^
+      |                                                                             ;
+......
+  161 |     return index;
+      |     ~~~~~~                                                                   
+../Src/serial.c:162:1: warning: control reaches end of non-void function [-Wreturn-type]
+  162 | }
+      | ^
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+12:43:57 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4188	    376	   1896	   6460	   193c	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:45:00 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4192	    376	   1896	   6464	   1940	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:46:51 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4192	    376	   1896	   6464	   1940	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+12:47:42 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-size  SerialInterface.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4192	    376	   1896	   6464	   1940	SerialInterface.elf
+Finished building: default.size.stdout
+ 

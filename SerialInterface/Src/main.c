@@ -27,40 +27,40 @@
 #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
-void finished_transmission(uint32_t bytes_sent) {
-    // This function will be called after a transmission is complete
-    volatile uint32_t test = 0;
-    // make a very simple delay
-    for (volatile uint32_t i = 0; i < 0x8ffff; i++) {
-        // waste time !
-    }
+void completion_callback(uint8_t *string_buffer, uint8_t chars_read) {
+    // This will only be called when a complete string has been received
+
+    // Echo back the received string
+    SerialOutputString((uint8_t*)"You entered: ", &USART1_PORT);
+    SerialOutputString(string_buffer, &USART1_PORT);
+    SerialOutputString((uint8_t*)"\r", &USART1_PORT);
+    SerialOutputString((uint8_t*)"Characters received: ", &USART1_PORT);
+
+    // Convert chars_read to string and display
+    char num_str[10];
+    sprintf(num_str, "%d", chars_read);
+    SerialOutputString((uint8_t*)num_str, &USART1_PORT);
+    SerialOutputString((uint8_t*)"\r\n\r\n", &USART1_PORT);
+
+    // Prompt for next input
+    SerialOutputString((uint8_t*)"Enter text ('\\r' to terminate):\r\n", &USART1_PORT);
 }
 
-int main(void)
-{
+int main(void) {
     // Initialize the serial port with a baud rate of 115200
-    SerialInitialise(BAUD_115200, &USART1_PORT, &finished_transmission);
+    SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
 
     // Send initial welcome message
     SerialOutputString((uint8_t*)"Welcome to UART Interface\r\n", &USART1_PORT);
-    SerialOutputString((uint8_t*)"Enter text (press Enter to terminate):\r\n", &USART1_PORT);
+    SerialOutputString((uint8_t*)"Enter text ('\\r' to terminate):\r\n", &USART1_PORT);
 
     /* Loop forever */
     for(;;) {
-        // Read input string from serial port
-        uint16_t chars_read = SerialInputString(&USART1_PORT);
+        // Call SerialInputString to handle input
+        // The completion_callback will be triggered when a full string is received
+        SerialInputString(&USART1_PORT);
 
-        // Output a newline for better formatting
-        SerialOutputString((uint8_t*)"\r\n", &USART1_PORT);
-
-        // Echo back the received string
-        SerialOutputString((uint8_t*)"You entered: ", &USART1_PORT);
-        SerialOutputString(USART1_PORT.rx_buffer, &USART1_PORT);
-        SerialOutputString((uint8_t*)"\r\n", &USART1_PORT);
-        SerialOutputString((uint8_t*)"Characters received: ", &USART1_PORT);
-
-
-        // Prompt for next input
-        SerialOutputString((uint8_t*)"Enter text (press Enter to terminate):\r\n", &USART1_PORT);
+        // Note: In a more sophisticated implementation, you might want to
+        // make SerialInputString non-blocking and use interrupt-driven input
     }
 }

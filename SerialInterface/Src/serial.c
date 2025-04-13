@@ -29,8 +29,9 @@ SerialPort USART1_PORT = {USART1,
 
 // InitialiseSerial - Initialise the serial port
 // Input: baudRate is from an enumerated set
-void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t)) {
-    serial_port->completion_function = completion_function;
+void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint8_t length)) {
+
+	serial_port->completion_function = callback; //callback to function
 
     // enable clock power, system configuration clock and GPIOC
     // common to all UARTs
@@ -97,9 +98,6 @@ void SerialOutputString(uint8_t *pt, SerialPort *serial_port) {
         counter++;
         pt++;
     }
-
-    // Call the completion function if it exists
-     serial_port->completion_function(counter);
 }
 
 
@@ -157,7 +155,7 @@ uint16_t SerialInputString(SerialPort *serial_port) {
     serial_port->rx_buffer[index] = '\0';
 
     // Call the completion function if it exists
-    serial_port->completion_function(index);
+    serial_port->completion_function(serial_port->rx_buffer, (uint8_t)index);
 
 
     return index;

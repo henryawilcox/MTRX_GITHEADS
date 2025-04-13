@@ -20,7 +20,8 @@ typedef enum {
 typedef struct _SerialPort SerialPort;
 
 // Function prototypes
-void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint8_t length));
+
 void SerialOutputChar(uint8_t data, SerialPort *serial_port);
 void SerialOutputString(uint8_t *pt, SerialPort *serial_port);
 uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char);
@@ -38,7 +39,7 @@ struct _SerialPort {
     volatile uint32_t SerialPinAlternatePinValueLow;
     volatile uint32_t SerialPinAlternatePinValueHigh;
     uint8_t rx_buffer[BUFFER_SIZE];   // Buffer to store received characters
-    void (*completion_function)(uint32_t);
+    void (*completion_function)(uint8_t*, uint8_t);  // Changed to match main.c
 };
 
 // Declare the serial port to be used

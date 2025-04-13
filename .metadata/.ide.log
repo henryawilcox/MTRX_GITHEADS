@@ -1,52 +1,182 @@
-2025-04-13 00:58:46,378 [INFO] WebApp:190 - Connection lost
-2025-04-13 00:58:47,829 [INFO] WebApp:187 - Connection restablished
-2025-04-13 01:14:00,734 [INFO] WebApp:190 - Connection lost
-2025-04-13 01:14:01,107 [INFO] WebApp:187 - Connection restablished
-2025-04-13 01:14:03,952 [INFO] WebApp:190 - Connection lost
-2025-04-13 01:14:13,238 [INFO] WebApp:187 - Connection restablished
-2025-04-13 01:14:14,198 [INFO] WebApp:190 - Connection lost
-2025-04-13 01:14:15,892 [INFO] WebApp:187 - Connection restablished
-2025-04-13 01:14:17,267 [INFO] WebApp:190 - Connection lost
-2025-04-13 01:14:18,901 [INFO] WebApp:187 - Connection restablished
-2025-04-13 02:26:51,825 [INFO] WebApp:190 - Connection lost
-2025-04-13 02:26:55,227 [INFO] WebApp:187 - Connection restablished
-2025-04-13 03:55:09,396 [INFO] WebApp:190 - Connection lost
-2025-04-13 03:55:10,081 [INFO] WebApp:187 - Connection restablished
-2025-04-13 03:55:12,766 [INFO] WebApp:190 - Connection lost
-2025-04-13 03:55:17,271 [INFO] WebApp:187 - Connection restablished
-2025-04-13 04:17:38,915 [INFO] WebApp:190 - Connection lost
-2025-04-13 04:17:42,307 [INFO] WebApp:187 - Connection restablished
-2025-04-13 05:45:49,230 [INFO] WebApp:190 - Connection lost
-2025-04-13 05:45:50,527 [INFO] WebApp:187 - Connection restablished
-2025-04-13 06:17:23,779 [INFO] WebApp:190 - Connection lost
-2025-04-13 06:17:25,077 [INFO] WebApp:187 - Connection restablished
-2025-04-13 06:17:26,896 [INFO] WebApp:190 - Connection lost
-2025-04-13 07:45:17,491 [INFO] WebApp:187 - Connection restablished
-2025-04-13 07:45:18,327 [INFO] WebApp:190 - Connection lost
-2025-04-13 07:45:19,978 [INFO] WebApp:187 - Connection restablished
-2025-04-13 08:02:04,089 [INFO] WebApp:190 - Connection lost
-2025-04-13 08:02:07,679 [INFO] WebApp:187 - Connection restablished
-2025-04-13 08:22:38,702 [INFO] WebApp:190 - Connection lost
-2025-04-13 08:22:43,240 [INFO] WebApp:187 - Connection restablished
-2025-04-13 09:03:00,635 [INFO] WebApp:190 - Connection lost
-2025-04-13 09:03:03,501 [INFO] WebApp:187 - Connection restablished
-2025-04-13 09:03:04,012 [INFO] WebApp:190 - Connection lost
-2025-04-13 09:03:06,544 [INFO] WebApp:187 - Connection restablished
-2025-04-13 09:06:39,932 [INFO] WebApp:190 - Connection lost
-2025-04-13 09:06:42,790 [INFO] WebApp:187 - Connection restablished
-2025-04-13 09:06:42,941 [INFO] WebApp:190 - Connection lost
-2025-04-13 09:06:46,142 [INFO] WebApp:187 - Connection restablished
-2025-04-13 09:55:02,042 [INFO] WebApp:190 - Connection lost
-2025-04-13 09:55:02,439 [INFO] WebApp:187 - Connection restablished
-2025-04-13 09:55:04,960 [INFO] WebApp:190 - Connection lost
-2025-04-13 09:55:05,568 [INFO] WebApp:187 - Connection restablished
-2025-04-13 10:04:00,816 [INFO] WebApp:190 - Connection lost
-2025-04-13 10:04:04,313 [INFO] WebApp:187 - Connection restablished
-2025-04-13 11:05:00,834 [INFO] WebApp:190 - Connection lost
-2025-04-13 11:05:01,151 [INFO] WebApp:187 - Connection restablished
-2025-04-13 11:05:04,286 [INFO] WebApp:190 - Connection lost
-2025-04-13 11:05:07,373 [INFO] WebApp:187 - Connection restablished
-2025-04-13 11:09:39,981 [INFO] WebApp:190 - Connection lost
-2025-04-13 11:09:40,363 [INFO] WebApp:187 - Connection restablished
-2025-04-13 11:09:43,021 [INFO] WebApp:190 - Connection lost
-2025-04-13 11:09:45,775 [INFO] WebApp:187 - Connection restablished
+2025-04-13 11:59:47,870 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:47,892 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,245 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,248 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,258 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,259 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,263 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,264 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,267 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,267 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,270 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,271 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,328 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,328 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,723 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,725 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,763 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,763 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,766 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,766 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,768 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,768 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:51,770 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:51,770 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:52,274 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:52,275 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:52,279 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:52,279 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:52,282 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:52,282 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:52,286 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:52,286 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 11:59:52,416 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 11:59:52,417 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,405 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,407 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,423 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,423 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,428 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,430 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,470 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,471 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,475 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,475 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,477 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,477 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,881 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,881 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,914 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,914 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:09,987 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:09,987 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,056 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,059 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,060 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,061 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,062 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,063 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,085 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,085 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,086 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,086 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,089 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,089 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,090 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,090 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,471 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,472 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,474 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,474 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,479 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,479 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,481 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,481 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:10,517 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:10,518 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:13,790 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:13,790 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:13,801 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:13,802 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:13,803 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:13,803 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:13,846 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:13,846 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:13,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:13,849 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:13,850 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:13,851 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,198 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,198 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,223 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,223 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,253 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,253 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,296 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,296 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,298 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,298 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,299 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,300 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,301 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,301 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,304 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,304 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,327 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,327 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,331 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,331 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,332 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,332 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,333 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,333 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,750 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,752 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,756 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,756 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,757 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,758 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,759 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,759 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:14,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:14,862 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:35,427 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:35,427 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:35,438 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:35,438 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:35,441 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:35,441 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:44,742 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:44,743 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:00:44,746 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:00:44,746 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,462 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,469 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,496 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,497 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,506 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,506 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,510 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,510 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,511 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,511 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,512 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,513 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,547 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,552 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,711 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,720 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:48,854 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:48,855 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,482 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,488 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,507 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,507 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,514 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,516 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,542 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,543 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,545 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,546 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,548 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,548 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,553 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,556 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,558 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,558 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:02:49,560 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:02:49,560 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:03:52,317 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:03:52,323 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:03:52,338 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:03:52,338 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:03:52,344 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:03:52,344 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:03:52,346 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:03:52,346 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
+2025-04-13 12:03:52,516 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] [Fatal Error] :48:2: The content of elements must consist of well-formed character data or markup.
+2025-04-13 12:03:52,516 [ERROR] LogOutputStream:75 - [STDERR_REDIRECT] 
