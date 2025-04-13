@@ -2238,3 +2238,298 @@ make: *** Waiting for unfinished jobs....
       |             ^~~~~~~~~~~~~~~~
       |             SerialOutputBuffer
 "make -j9 all" terminated with exit code 2. Build might be incomplete.
+11:18:52 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+In file included from ../Src/serial.c:1:
+../Inc/serial.h:1:1: error: expected identifier or '(' before ']' token
+    1 | ]#ifndef SERIAL_H
+      | ^
+../Inc/serial.h:1:2: error: stray '#' in program
+    1 | ]#ifndef SERIAL_H
+      |  ^
+In file included from /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/stdint.h:14,
+                 from /Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/lib/gcc/arm-none-eabi/12.3.1/include/stdint.h:9,
+                 from ../Inc/serial.h:4:
+/Applications/STM32CubeIDE.app/Contents/Eclipse/plugins/com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.12.3.rel1.macos64_1.1.0.202410301201/tools/arm-none-eabi/include/sys/_stdint.h:20:9: error: unknown type name '__int8_t'
+   20 | typedef __int8_t int8_t ;
+      |         ^~~~~~~~
+In file included from ../Src/main.c:23:
+../Inc/serial.h:1:1: error: expected identifier or '(' before ']' token
+    1 | ]#ifndef SERIAL_H
+      | ^
+../Inc/serial.h:1:2: error: stray '#' in program
+    1 | ]#ifndef SERIAL_H
+      |  ^
+In file included from ../Inc/serial.h:5:
+../Inc/stm32f303xc.h:145:3: warning: data definition has no type or storage class
+  145 | } IRQn_Type;
+      |   ^~~~~~~~~
+../Inc/stm32f303xc.h:145:3: warning: type defaults to 'int' in declaration of 'IRQn_Type' [-Wimplicit-int]
+In file included from ../Inc/stm32f303xc.h:151:
+../Inc/core_cm4.h:1688:39: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1688 | __STATIC_INLINE void __NVIC_EnableIRQ(IRQn_Type IRQn)
+      |                                       ^~~~~~~~~
+../Inc/core_cm4.h:1705:46: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1705 | __STATIC_INLINE uint32_t __NVIC_GetEnableIRQ(IRQn_Type IRQn)
+      |                                              ^~~~~~~~~
+../Inc/core_cm4.h:1724:40: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1724 | __STATIC_INLINE void __NVIC_DisableIRQ(IRQn_Type IRQn)
+      |                                        ^~~~~~~~~
+../Inc/core_cm4.h:1743:47: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1743 | __STATIC_INLINE uint32_t __NVIC_GetPendingIRQ(IRQn_Type IRQn)
+      |                                               ^~~~~~~~~
+../Inc/core_cm4.h:1762:43: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1762 | __STATIC_INLINE void __NVIC_SetPendingIRQ(IRQn_Type IRQn)
+      |                                           ^~~~~~~~~
+../Inc/core_cm4.h:1777:45: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1777 | __STATIC_INLINE void __NVIC_ClearPendingIRQ(IRQn_Type IRQn)
+      |                                             ^~~~~~~~~
+../Inc/core_cm4.h:1794:43: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1794 | __STATIC_INLINE uint32_t __NVIC_GetActive(IRQn_Type IRQn)
+      |                                           ^~~~~~~~~
+../Inc/core_cm4.h:1816:41: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1816 | __STATIC_INLINE void __NVIC_SetPriority(IRQn_Type IRQn, uint32_t priority)
+      |                                         ^~~~~~~~~
+../Inc/core_cm4.h:1838:45: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1838 | __STATIC_INLINE uint32_t __NVIC_GetPriority(IRQn_Type IRQn)
+      |                                             ^~~~~~~~~
+../Inc/core_cm4.h:1913:39: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1913 | __STATIC_INLINE void __NVIC_SetVector(IRQn_Type IRQn, uint32_t vector)
+      |                                       ^~~~~~~~~
+../Inc/core_cm4.h:1928:43: error: expected declaration specifiers or '...' before 'IRQn_Type'
+ 1928 | __STATIC_INLINE uint32_t __NVIC_GetVector(IRQn_Type IRQn)
+      |                                           ^~~~~~~~~
+../Inc/core_cm4.h: In function 'SysTick_Config':
+../Inc/core_cm4.h:1621:39: warning: implicit declaration of function '__NVIC_SetPriority'; did you mean 'NVIC_SetPriority'? [-Wimplicit-function-declaration]
+ 1621 |   #define NVIC_SetPriority            __NVIC_SetPriority
+      |                                       ^~~~~~~~~~~~~~~~~~
+../Inc/core_cm4.h:2030:3: note: in expansion of macro 'NVIC_SetPriority'
+ 2030 |   NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); /* set Priority for Systick Interrupt */
+      |   ^~~~~~~~~~~~~~~~
+../Inc/core_cm4.h:2030:21: error: 'SysTick_IRQn' undeclared (first use in this function); did you mean 'SysTick_Type'?
+ 2030 |   NVIC_SetPriority (SysTick_IRQn, (1UL << __NVIC_PRIO_BITS) - 1UL); /* set Priority for Systick Interrupt */
+      |                     ^~~~~~~~~~~~
+      |                     SysTick_Type
+../Inc/core_cm4.h:2030:21: note: each undeclared identifier is reported only once for each function it appears in
+../Inc/serial.h:47:2: error: #endif without #if
+   47 | #endif // SERIAL_H
+      |  ^~~~~
+../Src/serial.c:16:28: error: 'NULL' undeclared here (not in a function)
+   16 |     .completion_function = NULL          // default function pointer is NULL
+      |                            ^~~~
+../Src/serial.c:2:1: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+    1 | #include "serial.h"
+  +++ |+#include <stddef.h>
+    2 | 
+../Inc/serial.h: At top level:
+../Inc/serial.h:47:2: error: #endif without #if
+   47 | #endif // SERIAL_H
+      |  ^~~~~
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+make: *** Waiting for unfinished jobs....
+make: *** [Src/subdir.mk:28: Src/main.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+11:20:19 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
+   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+      |  ^~~~~~~
+../Src/main.c: In function 'finished_transmission':
+../Src/main.c:32:23: warning: unused variable 'test' [-Wunused-variable]
+   32 |     volatile uint32_t test = 0;
+      |                       ^~~~
+../Src/serial.c:31:6: error: conflicting types for 'SerialInitialise'; have 'void(uint32_t,  SerialPort *, void (*)(uint32_t))' {aka 'void(long unsigned int,  struct _SerialPort *, void (*)(long unsigned int))'}
+   31 | void SerialInitialise(uint32_t baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t)) {
+      |      ^~~~~~~~~~~~~~~~
+In file included from ../Src/serial.c:1:
+../Inc/serial.h:23:6: note: previous declaration of 'SerialInitialise' with type 'void(BaudRate,  SerialPort *, void (*)(uint32_t))' {aka 'void(BaudRate,  struct _SerialPort *, void (*)(long unsigned int))'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |      ^~~~~~~~~~~~~~~~
+../Src/serial.c:99:6: error: conflicting types for 'SerialOutputString'; have 'void(uint32_t *, SerialPort *)' {aka 'void(long unsigned int *, struct _SerialPort *)'}
+   99 | void SerialOutputString(uint32_t *pt, SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~~~
+../Inc/serial.h:25:6: note: previous declaration of 'SerialOutputString' with type 'void(uint8_t *, SerialPort *)' {aka 'void(unsigned char *, struct _SerialPort *)'}
+   25 | void SerialOutputString(uint8_t *pt, SerialPort *serial_port);
+      |      ^~~~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialReceiveChar':
+../Src/serial.c:122:26: error: 'SerialPort' {aka 'struct _SerialPort'} has no member named 'StatusRegister'
+  122 |         if (*(serial_port->StatusRegister) & USART_ISR_ORE || *(serial_port->StatusRegister) & USART_ISR_FE) {
+      |                          ^~
+../Src/serial.c:122:76: error: 'SerialPort' {aka 'struct _SerialPort'} has no member named 'StatusRegister'
+  122 |         if (*(serial_port->StatusRegister) & USART_ISR_ORE || *(serial_port->StatusRegister) & USART_ISR_FE) {
+      |                                                                            ^~
+../Src/serial.c:123:30: error: 'SerialPort' {aka 'struct _SerialPort'} has no member named 'FlagClearRegister'
+  123 |                 *(serial_port->FlagClearRegister) |= USART_ICR_ORECF | USART_ICR_FECF;
+      |                              ^~
+../Src/serial.c:126:26: error: 'SerialPort' {aka 'struct _SerialPort'} has no member named 'StatusRegister'
+  126 |         if (*(serial_port->StatusRegister) & USART_ISR_RXNE) { // Wait for RXNE flag to be set
+      |                          ^~
+../Src/serial.c:130:33: error: 'SerialPort' {aka 'struct _SerialPort'} has no member named 'DataInputRegister'
+  130 |   *received_char = *(serial_port->DataInputRegister);
+      |                                 ^~
+../Src/serial.c:114:17: warning: unused variable 'latest_character' [-Wunused-variable]
+  114 |         uint8_t latest_character = 0;
+      |                 ^~~~~~~~~~~~~~~~
+../Src/serial.c: At top level:
+../Src/serial.c:133:1: error: expected identifier or '(' before '}' token
+  133 | }
+      | ^
+../Src/serial.c:135:6: error: conflicting types for 'SerialInputString'; have 'void(SerialPort *)' {aka 'void(struct _SerialPort *)'}
+  135 | void SerialInputString(SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~~
+../Inc/serial.h:27:10: note: previous declaration of 'SerialInputString' with type 'uint16_t(SerialPort *)' {aka 'short unsigned int(struct _SerialPort *)'}
+   27 | uint16_t SerialInputString(SerialPort *serial_port);
+      |          ^~~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialInputString':
+../Src/serial.c:145:21: warning: implicit declaration of function 'SerialInputChar'; did you mean 'SerialOutputChar'? [-Wimplicit-function-declaration]
+  145 |         InputChar = SerialInputChar(serial_port);
+      |                     ^~~~~~~~~~~~~~~
+      |                     SerialOutputChar
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+make: *** Waiting for unfinished jobs....
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+11:22:22 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/serial.c:31:6: error: conflicting types for 'SerialInitialise'; have 'void(uint32_t,  SerialPort *, void (*)(uint32_t))' {aka 'void(long unsigned int,  struct _SerialPort *, void (*)(long unsigned int))'}
+   31 | void SerialInitialise(uint32_t baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t)) {
+      |      ^~~~~~~~~~~~~~~~
+In file included from ../Src/serial.c:1:
+../Inc/serial.h:23:6: note: previous declaration of 'SerialInitialise' with type 'void(BaudRate,  SerialPort *, void (*)(uint32_t))' {aka 'void(BaudRate,  struct _SerialPort *, void (*)(long unsigned int))'}
+   23 | void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+      |      ^~~~~~~~~~~~~~~~
+../Src/serial.c:152:6: error: redefinition of 'SerialOutputChar'
+  152 | void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~
+../Src/serial.c:89:6: note: previous definition of 'SerialOutputChar' with type 'void(uint8_t,  SerialPort *)' {aka 'void(unsigned char,  struct _SerialPort *)'}
+   89 | void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
+      |      ^~~~~~~~~~~~~~~~
+../Src/serial.c: In function 'SerialOutputString':
+../Src/serial.c:171:45: error: 'NULL' undeclared (first use in this function)
+  171 |     if (serial_port->completion_function != NULL) {
+      |                                             ^~~~
+../Src/serial.c:4:1: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+    3 | #include "stm32f303xc.h"
+  +++ |+#include <stddef.h>
+    4 | 
+../Src/serial.c:171:45: note: each undeclared identifier is reported only once for each function it appears in
+  171 |     if (serial_port->completion_function != NULL) {
+      |                                             ^~~~
+../Src/serial.c: In function 'SerialInputString':
+../Src/serial.c:231:45: error: 'NULL' undeclared (first use in this function)
+  231 |     if (serial_port->completion_function != NULL) {
+      |                                             ^~~~
+../Src/serial.c:231:45: note: 'NULL' is defined in header '<stddef.h>'; did you forget to '#include <stddef.h>'?
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+11:24:17 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/serial.c: In function 'SerialOutputString':
+../Src/serial.c:102:42: error: 'index' undeclared (first use in this function)
+  102 |         serial_port->completion_function(index);
+      |                                          ^~~~~
+../Src/serial.c:102:42: note: each undeclared identifier is reported only once for each function it appears in
+../Src/serial.c:164:1: error: expected declaration or statement at end of input
+  164 | }
+      | ^
+../Src/serial.c: At top level:
+../Src/serial.c:131:10: warning: 'SerialInputString' defined but not used [-Wunused-function]
+  131 | uint16_t SerialInputString(SerialPort *serial_port) {
+      |          ^~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+11:24:20 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+../Src/serial.c: In function 'SerialOutputString':
+../Src/serial.c:102:42: error: 'index' undeclared (first use in this function)
+  102 |         serial_port->completion_function(index);
+      |                                          ^~~~~
+../Src/serial.c:102:42: note: each undeclared identifier is reported only once for each function it appears in
+../Src/serial.c:164:1: error: expected declaration or statement at end of input
+  164 | }
+      | ^
+../Src/serial.c: At top level:
+../Src/serial.c:131:10: warning: 'SerialInputString' defined but not used [-Wunused-function]
+  131 | uint16_t SerialInputString(SerialPort *serial_port) {
+      |          ^~~~~~~~~~~~~~~~~
+make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
+"make -j9 all" terminated with exit code 2. Build might be incomplete.
+11:25:15 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
+../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
+   15 | SerialPort USART1_PORT = {USART1,
+      |                          ^
+......
+   24 |                 0x00, //buffer intialised at 0
+      |                 {
+   25 |                 0x00 // default function pointer is NULL
+   26 |                 };
+      |                 }
+arm-none-eabi-gcc -o "SerialInterface.elf" @"objects.list"   -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterface/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterface.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: SerialInterface.elf
+ 
+arm-none-eabi-size  SerialInterface.elf 
+arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
+   text	   data	    bss	    dec	    hex	filename
+   4244	    376	   1896	   6516	   1974	SerialInterface.elf
+Finished building: default.size.stdout
+ 
+Finished building: SerialInterface.list
+ 
+11:26:03 **** Incremental Build of configuration Debug for project SerialInterface ****
+make -j9 all 
+arm-none-eabi-size  SerialInterface.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4244	    376	   1896	   6516	   1974	SerialInterface.elf
+Finished building: default.size.stdout
+ 

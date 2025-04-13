@@ -1,53 +1,47 @@
-#ifndef SERIAL_PORT_HEADER
-#define SERIAL_PORT_HEADER
-
+#ifndef SERIAL_H
+#define SERIAL_H
 
 #include <stdint.h>
+#include "stm32f303xc.h"
 
-// Defining the serial port struct, the definition is hidden in the
-// c file as no one really needs to know this.
-struct _SerialPort;
+// Define buffer size for input string
+#define BUFFER_SIZE 256
+
+// Define baud rate options
+typedef enum {
+    BAUD_9600,
+    BAUD_19200,
+    BAUD_38400,
+    BAUD_57600,
+    BAUD_115200
+} BaudRate;
+
+// Forward declaration of the SerialPort structure
 typedef struct _SerialPort SerialPort;
 
+// Function prototypes
+void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t));
+void SerialOutputChar(uint8_t data, SerialPort *serial_port);
+void SerialOutputString(uint8_t *pt, SerialPort *serial_port);
+uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char);
+uint16_t SerialInputString(SerialPort *serial_port);
 
-// make any number of instances of the serial port (they are extern because
-//   they are fixed, unique values)
-extern SerialPort USART1_PORT;
-
-
-// The user might want to select the baud rate
-enum {
-  BAUD_9600,
-  BAUD_19200,
-  BAUD_38400,
-  BAUD_57600,
-  BAUD_115200
+// Define the SerialPort structure
+struct _SerialPort {
+    USART_TypeDef *UART;
+    GPIO_TypeDef *GPIO;
+    volatile uint32_t MaskAPB2ENR;    // mask to enable RCC APB2 bus registers
+    volatile uint32_t MaskAPB1ENR;    // mask to enable RCC APB1 bus registers
+    volatile uint32_t MaskAHBENR;     // mask to enable RCC AHB bus registers
+    volatile uint32_t SerialPinModeValue;
+    volatile uint32_t SerialPinSpeedValue;
+    volatile uint32_t SerialPinAlternatePinValueLow;
+    volatile uint32_t SerialPinAlternatePinValueHigh;
+    uint8_t rx_buffer[BUFFER_SIZE];   // Buffer to store received characters
+    void (*completion_function)(uint32_t);
 };
 
- 
-// SerialInitialise - initialise the serial port
-// Input: baud rate as defined in the enum
-void SerialInitialise(uint32_t baudRate, SerialPort *serial_port, void (*completion_function)(uint32_t) );
- 
+// Declare the serial port to be used
+extern SerialPort USART1_PORT;
 
-// SerialOutputChar - output a char to the serial port
-//  note: this version waits until the port is ready (not using interrupts)
-// Input: char to be transferred
-uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char);
- 
-
-// SerialOutputString - output a NULL TERMINATED string to the serial port
-// Input: pointer to a NULL-TERMINATED string (if not null terminated, there will be problems)
-void SerialOutputString(uint8_t *pt, SerialPort *serial_port);
-
-
-// SerialOutputBuffer - output a buffer with defined length to the serial port
-// Input: pointer to a buffer, length of the buffer
-void SerialOutputBuffer(uint8_t *buffer, uint16_t buffer_length, SerialPort *serial_port);
-
-
-
-uint16_t SerialInputPacketHeader(char *buffer, SerialPort *serial_port);
-uint16_t SerialInputDataPacket(char *buffer, int length, SerialPort *serial_port);
-
-#endif
+#endif // SERIAL_H

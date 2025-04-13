@@ -27,15 +27,8 @@
 #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
 
-// Define buffer size for input string
-#define MAX_BUFFER_SIZE 256
-
-// Buffer to store received characters
-uint8_t inputBuffer[MAX_BUFFER_SIZE];
-
 void finished_transmission(uint32_t bytes_sent) {
     // This function will be called after a transmission is complete
-
     volatile uint32_t test = 0;
     // make a very simple delay
     for (volatile uint32_t i = 0; i < 0x8ffff; i++) {
@@ -43,56 +36,31 @@ void finished_transmission(uint32_t bytes_sent) {
     }
 }
 
-// Function to read a string from the serial port
-uint16_t SerialInputString(SerialPort *serial_port) {
-    uint16_t index = 0;
-    uint8_t receivedChar;
-
-    // Clear buffer first
-    for (int i = 0; i < MAX_BUFFER_SIZE; i++) {
-        inputBuffer[i] = 0;
-    }
-
-    // Read characters until enter key or buffer full
-    while (index < MAX_BUFFER_SIZE - 1) {
-        if (SerialReceiveChar(serial_port, &receivedChar)) {
-            // Echo the character back
-            SerialOutputChar(receivedChar, serial_port);
-
-            // Store character in buffer
-            inputBuffer[index++] = receivedChar;
-
-            // Break if CR or LF
-            if (receivedChar == '\r' || receivedChar == '\n') {
-                break;
-            }
-        }
-    }
-
-    // Null-terminate the string
-    inputBuffer[index] = '\0';
-
-    // Output a newline for better formatting
-    SerialOutputString((uint8_t*)"\r\n", serial_port);
-
-    // Echo back the received string
-    SerialOutputString((uint8_t*)"You entered: ", serial_port);
-    SerialOutputString(inputBuffer, serial_port);
-    SerialOutputString((uint8_t*)"\r\n", serial_port);
-
-    return index;
-}
-
 int main(void)
 {
+    // Initialize the serial port with a baud rate of 115200
     SerialInitialise(BAUD_115200, &USART1_PORT, &finished_transmission);
 
-    // Send initial message
-    SerialOutputString((uint8_t*)"Welcome\r\n", &USART1_PORT);
+    // Send initial welcome message
+    SerialOutputString((uint8_t*)"Welcome to UART Interface\r\n", &USART1_PORT);
+    SerialOutputString((uint8_t*)"Enter text (press Enter to terminate):\r\n", &USART1_PORT);
 
     /* Loop forever */
     for(;;) {
-        SerialInputString(&USART1_PORT);
+        // Read input string from serial port
+        uint16_t chars_read = SerialInputString(&USART1_PORT);
+
+        // Output a newline for better formatting
+        SerialOutputString((uint8_t*)"\r\n", &USART1_PORT);
+
+        // Echo back the received string
+        SerialOutputString((uint8_t*)"You entered: ", &USART1_PORT);
+        SerialOutputString(USART1_PORT.rx_buffer, &USART1_PORT);
+        SerialOutputString((uint8_t*)"\r\n", &USART1_PORT);
+        SerialOutputString((uint8_t*)"Characters received: ", &USART1_PORT);
+
+
+        // Prompt for next input
+        SerialOutputString((uint8_t*)"Enter text (press Enter to terminate):\r\n", &USART1_PORT);
     }
 }
-

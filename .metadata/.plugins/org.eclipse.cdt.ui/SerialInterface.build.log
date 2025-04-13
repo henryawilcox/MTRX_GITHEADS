@@ -1,40 +1,10 @@
-17:16:38 **** Incremental Build of configuration Debug for project SerialInterface ****
+11:26:03 **** Incremental Build of configuration Debug for project SerialInterface ****
 make -j9 all 
-arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
-arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
-../Src/main.c:27:2: warning: #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use." [-Wcpp]
-   27 | #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-      |  ^~~~~~~
-../Src/main.c: In function 'finished_transmission':
-../Src/main.c:39:23: warning: unused variable 'test' [-Wunused-variable]
-   39 |     volatile uint32_t test = 0;
-      |                       ^~~~
-../Src/serial.c: In function 'SerialReceiveChar':
-../Src/serial.c:145:17: warning: unused variable 'latest_character' [-Wunused-variable]
-  145 |         uint8_t latest_character = 0;
-      |                 ^~~~~~~~~~~~~~~~
-../Src/serial.c: In function 'SerialOutputBuffer':
-../Src/serial.c:179:26: warning: passing argument 1 of 'SerialOutputChar' makes integer from pointer without a cast [-Wint-conversion]
-  179 |         SerialOutputChar(&complete_buffer, serial_port);
-      |                          ^~~~~~~~~~~~~~~~
-      |                          |
-      |                          uint8_t * {aka unsigned char *}
-../Src/serial.c:119:31: note: expected 'uint8_t' {aka 'unsigned char'} but argument is of type 'uint8_t *' {aka 'unsigned char *'}
-  119 | void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
-      |                       ~~~~~~~~^~~~
-../Src/serial.c: At top level:
-../Src/serial.c:189:10: fatal error: serialise.h: No such file or directory
-  189 | #include "serialise.h"
-      |          ^~~~~~~~~~~~~
-compilation terminated.
-make: *** [Src/subdir.mk:28: Src/serial.o] Error 1
-make: *** Waiting for unfinished jobs....
-../Src/main.c: In function 'SerialInputString':
-../Src/main.c:60:13: warning: implicit declaration of function 'SerialOutputChar'; did you mean 'SerialOutputBuffer'? [-Wimplicit-function-declaration]
-   60 |             SerialOutputChar(receivedChar, serial_port);
-      |             ^~~~~~~~~~~~~~~~
-      |             SerialOutputBuffer
-"make -j9 all" terminated with exit code 2. Build might be incomplete.
+arm-none-eabi-size  SerialInterface.elf 
+   text	   data	    bss	    dec	    hex	filename
+   4244	    376	   1896	   6516	   1974	SerialInterface.elf
+Finished building: default.size.stdout
+ 
 
-17:16:39 Build Failed. 3 errors, 5 warnings. (took 517ms)
+11:26:04 Build Finished. 0 errors, 0 warnings. (took 565ms)
 

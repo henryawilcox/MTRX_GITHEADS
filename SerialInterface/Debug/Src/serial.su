@@ -1,0 +1,5 @@
+../Src/serial.c:32:6:SerialInitialise	32	static
+../Src/serial.c:83:6:SerialOutputChar	16	static
+../Src/serial.c:93:6:SerialOutputString	24	static
+../Src/serial.c:107:9:SerialReceiveChar	24	static
+../Src/serial.c:132:10:SerialInputString	32	static
