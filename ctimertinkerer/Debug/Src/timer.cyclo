@@ -1,5 +1,7 @@
+C:/Users/roryl/rorylocalclabwork/stm32f303-definitions/Core/Inc/core_cm4.h:1688:22:__NVIC_EnableIRQ	2
 ../Src/timer.c:10:6:Timer_Init	1
-../Src/timer.c:23:6:Timer_Start	5
-../Src/timer.c:41:6:setTimerPeriod	1
-../Src/timer.c:47:10:getTimerPeriod	1
-../Src/timer.c:78:6:Timer_StartOneShot	3
+../Src/timer.c:27:6:Timer_Start	1
+../Src/timer.c:32:6:Timer_StartOneShot	1
+../Src/timer.c:49:6:setTimerPeriod	1
+../Src/timer.c:55:10:getTimerPeriod	1
+../Src/timer.c:59:6:TIM2_IRQHandler	5
