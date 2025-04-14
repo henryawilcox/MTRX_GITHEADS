@@ -7,95 +7,103 @@
 
 #include "serial.h"
 #include "serial_interrupt.h"
-
 #include "stm32f303xc.h"
-
 
 // Flag to indicate if a complete string has been received
 volatile uint8_t string_recieved;
-// Global index for storing characters in the buffer
+
+// Index for storing characters in the RX buffer
 volatile uint8_t rx_index = 0;
-//receiving buffers
+
+// Buffers for receiving data
+// rx_buffer1 is filled live during character reception
+// rx_buffer2 is a safe copy handed off to the main loop
 uint8_t rx_buffer1[BUFFER_SIZE];
 uint8_t rx_buffer2[BUFFER_SIZE];
 
-
 void EnableSerialInterrupts(SerialPort *serial_port) {
-    // Disable interrupts while setting up
+    // Disable global interrupts to prevent issues during setup
     __disable_irq();
 
+    // Reset flags and index
     rx_index = 0;
     string_recieved = 0;
 
-    // Reset buffers
+    // Clear both RX buffers
     for (int i = 0; i < BUFFER_SIZE; i++) {
-    	rx_buffer1[i] = 0;
-    	rx_buffer2[i] = 0;
+        rx_buffer1[i] = 0;
+        rx_buffer2[i] = 0;
     }
 
-
-    // Enable RXNE interrupt
+    // Enable Receive Not Empty interrupt (triggers when data arrives)
     serial_port->UART->CR1 |= USART_CR1_RXNEIE;
 
-    // Enable the USART1 interrupt in NVIC (assuming USART1)
-    NVIC_EnableIRQ(USART1_IRQn);
-    NVIC_SetPriority(USART1_IRQn, 0);
+    // Enable USART1 interrupt in the NVIC
+    NVIC_EnableIRQ(USART1_IRQn);              // Be sure your startup file maps this correctly
+    NVIC_SetPriority(USART1_IRQn, 0);         // Highest priority (lowest numerical value)
 
-    // Re-enable interrupts
+    // Re-enable global interrupts
     __enable_irq();
 }
 
-// USART1 interrupt handler
+// Interrupt Service Routine for USART1
 void USART1_EXTI25_IRQHandler(void) {
-    // Check if we received data
+    // ---------------------------
+    // RX SECTION
+    // ---------------------------
+    // Check if RXNE (Receive Data Register Not Empty) is set
     if (USART1_PORT.UART->ISR & USART_ISR_RXNE) {
-        // Read the received data
+        // Read the incoming character
         uint8_t received_char = USART1_PORT.UART->RDR;
 
-        // Echo the character back immediately to test
-         SerialOutputChar(received_char, &USART1_PORT);
+        // Echo the character back for user feedback
+        SerialOutputChar(received_char, &USART1_PORT);
 
-        // Store the character if there's space in the buffer
+        // Only process if there's space in the buffer
         if (rx_index < BUFFER_SIZE - 1) {
-            // Store character in buffer1
+            // Store received character in live RX buffer
             rx_buffer1[rx_index++] = received_char;
 
-            // Check if terminating character received
+            // Check for end-of-input character (ENTER/RETURN key)
             if (received_char == '\r' || received_char == '\n') {
                 // Null-terminate the string
                 rx_buffer1[rx_index] = '\0';
                 string_recieved = 1;
 
-                //transfer buffer1 to buffer2 and reset buffer1
-
+                // Copy buffer1 to buffer2 (safe for processing outside ISR)
                 for (int i = 0; i < BUFFER_SIZE; i++) {
-                		rx_buffer2[i] = rx_buffer1[i];
-                        rx_buffer1[i] = 0;
+                    rx_buffer2[i] = rx_buffer1[i];
+                    rx_buffer1[i] = 0; // Clear buffer1 for next message
                 }
 
+                // Trigger the completion callback with the full message
                 USART1_PORT.completion_function(rx_buffer2, rx_index);
 
-                // Reset index after processing
+                // Reset index for next message
                 rx_index = 0;
             }
         } else {
-            // Buffer overflow - reset
+            // If buffer overflows, clear and notify
             rx_index = 0;
             uint8_t BUFFEROVERFLOW[BUFFER_SIZE] = "ERROR: BUFFER OVERFLOW";
-
             USART1_PORT.completion_function(BUFFEROVERFLOW, rx_index);
-
         }
     }
-    // Transmit handler
+
+    // ---------------------------
+    // TX SECTION
+    // ---------------------------
+    // Check if TXE (Transmit Data Register Empty) interrupt is enabled and pending
     if ((USART1->CR1 & USART_CR1_TXEIE) && (USART1->ISR & USART_ISR_TXE)) {
+        // Check if there is data left to transmit in the circular buffer
         if (USART1_PORT.tx_tail != USART1_PORT.tx_head) {
+            // Send next character from the TX buffer
             USART1->TDR = USART1_PORT.tx_buffer[USART1_PORT.tx_tail];
             USART1_PORT.tx_tail = (USART1_PORT.tx_tail + 1) % TX_BUFFER_SIZE;
         } else {
+            // Transmission is complete — disable TXE interrupt
             USART1->CR1 &= ~USART_CR1_TXEIE;
             USART1_PORT.tx_busy = 0;
         }
     }
-
 }

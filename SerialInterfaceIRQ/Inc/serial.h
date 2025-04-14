@@ -22,11 +22,9 @@ typedef struct _SerialPort SerialPort;
 
 // Function prototypes
 void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callback)(uint8_t *data, uint8_t length));
-
 void SerialOutputChar(uint8_t data, SerialPort *serial_port);
 void SerialOutputString(uint8_t *pt, SerialPort *serial_port);
-uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char);
-uint16_t SerialInputString(SerialPort *serial_port);
+
 
 // Define the SerialPort structure
 struct _SerialPort {
