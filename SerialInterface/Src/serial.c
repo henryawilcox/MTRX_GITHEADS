@@ -1,6 +1,7 @@
 #include "serial.h"
 
 #include "stm32f303xc.h"
+#include <stddef.h>
 
 
 
@@ -154,9 +155,19 @@ uint16_t SerialInputString(SerialPort *serial_port) {
     // Null-terminate the string
     serial_port->rx_buffer[index] = '\0';
 
-    // Call the completion function if it exists
-    serial_port->completion_function(serial_port->rx_buffer, (uint8_t)index);
+    // Null-terminate string and strip '\r' if needed
+    uint8_t clean_length = index;
+    if (index > 0 && (serial_port->rx_buffer[index - 1] == '\r' || serial_port->rx_buffer[index - 1] == '\n')) {
+        clean_length--;
+        serial_port->rx_buffer[clean_length] = '\0';  // Replace terminator with '\0'
+    } else {
+        serial_port->rx_buffer[clean_length] = '\0';  // Add null at end
+    }
 
+    // Call the completion function if it exists
+    if (serial_port->completion_function != NULL) {
+        serial_port->completion_function(serial_port->rx_buffer, clean_length);
+    }
 
     return index;
 }
