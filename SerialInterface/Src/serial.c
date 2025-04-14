@@ -1,7 +1,8 @@
 #include "serial.h"
 
 #include "stm32f303xc.h"
-#include <stddef.h>
+#include "core_cm4.h"  // for NVIC functions
+#include "stddef.h"
 
 
 
@@ -22,9 +23,9 @@ SerialPort USART1_PORT = {USART1,
 		0xF00,
 		0x770000,  // for USART1 PC10 and 11, this is in the AFR low register
 		0x00, // no change to the high alternate function register
-		0x00, //buffer intialised at 0
+		{0x00}, //buffer intialised at 0
 		0x00 // default function pointer is NULL
-		};
+};
 
 
 
@@ -80,6 +81,9 @@ void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callbac
 
     // enable serial port for tx and rx
     serial_port->UART->CR1 |= USART_CR1_TE | USART_CR1_RE | USART_CR1_UE;
+
+    serial_port->UART->CR1 |= USART_CR1_RXNEIE; // Enable RX interrupt
+    NVIC_EnableIRQ(USART1_IRQn);               // Enable interrupt in NVIC
 }
 
 void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
@@ -171,3 +175,29 @@ uint16_t SerialInputString(SerialPort *serial_port) {
 
     return index;
 }
+
+
+void USART1_EXTI25_IRQHandler(void) {
+    uint8_t c;
+
+    // Check if RXNE (Receive register not empty) is set
+    if (USART1->ISR & USART_ISR_RXNE) {
+        c = USART1->RDR; // Read received character
+
+        // Store in buffer
+        static uint8_t index = 0;
+        USART1_PORT.rx_buffer[index++] = c;
+
+        // Check for terminator
+        if (c == '\r' || c == '\n' || index >= BUFFER_SIZE - 1) {
+            USART1_PORT.rx_buffer[index] = '\0'; // Null-terminate
+
+            if (USART1_PORT.completion_function != NULL) {
+                USART1_PORT.completion_function(USART1_PORT.rx_buffer, index - 1);
+            }
+
+            index = 0; // Reset for next message
+        }
+    }
+}
+

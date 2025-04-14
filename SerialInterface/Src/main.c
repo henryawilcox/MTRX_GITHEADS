@@ -23,9 +23,9 @@
 #include "serial.h"
 #include "stm32f303xc.h"
 
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+//#if !defined(__SOFT_FP__) && defined(__ARM_FP)
+//#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+//#endif
 
 
 void completion_callback(uint8_t *string_buffer, uint8_t length) {
@@ -48,6 +48,9 @@ void completion_callback(uint8_t *string_buffer, uint8_t length) {
 
 
 int main(void) {
+//	SCB->CPACR |= (0xF << 20); // Enable CP10 and CP11 full access (FPU)
+//	SerialOutputString((uint8_t*)"[MAIN START]\r\n", &USART1_PORT);
+
     // Initialize the serial port with a baud rate of 115200
     SerialInitialise(BAUD_115200, &USART1_PORT, &completion_callback);
 
@@ -55,13 +58,16 @@ int main(void) {
     SerialOutputString((uint8_t*)"UART ACTIVATED\r\n", &USART1_PORT);
     SerialOutputString((uint8_t*)"Enter text ('\\r' to terminate):\r\n", &USART1_PORT);
 
-    /* Loop forever */
-    for(;;) {
-        // Call SerialInputString to handle input
-        // The completion_callback will be triggered when a full string is received
-        SerialInputString(&USART1_PORT);
+    while(1){
 
-        // Note: In a more sophisticated implementation, you might want to
-        // make SerialInputString non-blocking and use interrupt-driven input
     }
+    /* Loop forever */
+//    for(;;) {
+//        // Call SerialInputString to handle input
+//        // The completion_callback will be triggered when a full string is received
+////        SerialInputString(&USART1_PORT);
+//
+//        // Note: In a more sophisticated implementation, you might want to
+//        // make SerialInputString non-blocking and use interrupt-driven input
+//    }
 }

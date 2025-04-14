@@ -1,5 +1,7 @@
-../Src/serial.c:33:6:SerialInitialise	6
-../Src/serial.c:85:6:SerialOutputChar	2
-../Src/serial.c:95:6:SerialOutputString	2
-../Src/serial.c:106:9:SerialReceiveChar	5
-../Src/serial.c:131:10:SerialInputString	10
+../Inc/core_cm4.h:1688:22:__NVIC_EnableIRQ	2
+../Src/serial.c:34:6:SerialInitialise	6
+../Src/serial.c:89:6:SerialOutputChar	2
+../Src/serial.c:99:6:SerialOutputString	2
+../Src/serial.c:110:9:SerialReceiveChar	5
+../Src/serial.c:135:10:SerialInputString	10
+../Src/serial.c:180:6:USART1_EXTI25_IRQHandler	6
