@@ -1,7 +1,5 @@
-../Inc/core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
-../Src/serial.c:34:6:SerialInitialise	32	static
-../Src/serial.c:89:6:SerialOutputChar	16	static
-../Src/serial.c:99:6:SerialOutputString	24	static
-../Src/serial.c:110:9:SerialReceiveChar	24	static
-../Src/serial.c:135:10:SerialInputString	32	static
-../Src/serial.c:180:6:USART1_EXTI25_IRQHandler	16	static
+../Src/serial.c:32:6:SerialInitialise	32	static
+../Src/serial.c:84:6:SerialOutputChar	16	static
+../Src/serial.c:94:6:SerialOutputString	24	static
+../Src/serial.c:105:9:SerialReceiveChar	24	static
+../Src/serial.c:130:10:SerialInputString	32	static

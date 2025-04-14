@@ -2570,3 +2570,15 @@ Caused by: org.eclipse.core.runtime.CoreException: Cannot create or restore 'Ser
 
 !ENTRY org.eclipse.cdt.core 1 0 2025-04-13 17:18:07.252
 !MESSAGE Indexed 'touch-sensor' (29 sources, 124 headers) in 4.17 sec: 12,414 declarations; 76,402 references; 2 unresolved inclusions; 42 syntax errors; 147 unresolved names (0.17%)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-04-14 12:08:56.638
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 26 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-04-14 12:08:56.641
+!MESSAGE Existing sessions are:
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-04-14 12:08:56.643
+!MESSAGE Error - No active DSF-Session. tmpSessionId = 26 (contextManager row 121)
+
+!ENTRY com.st.stm32cube.ide.mcu.debug 4 0 2025-04-14 12:08:56.643
+!MESSAGE Existing sessions are:

@@ -1,4 +1,4 @@
-17:23:35 **** Incremental Build of configuration Debug for project DigitalIO ****
+17:56:28 **** Incremental Build of configuration Debug for project DigitalIO ****
 make -j9 all 
 arm-none-eabi-size  DigitalIO.elf 
    text	   data	    bss	    dec	    hex	filename
@@ -6,5 +6,5 @@ arm-none-eabi-size  DigitalIO.elf
 Finished building: default.size.stdout
  
 
-17:23:35 Build Finished. 0 errors, 0 warnings. (took 319ms)
+17:56:29 Build Finished. 0 errors, 0 warnings. (took 640ms)
 
