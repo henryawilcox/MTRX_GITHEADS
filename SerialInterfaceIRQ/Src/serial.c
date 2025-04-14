@@ -81,14 +81,28 @@ void SerialInitialise(BaudRate baudRate, SerialPort *serial_port, void (*callbac
     serial_port->UART->CR1 |= USART_CR1_TE | USART_CR1_RE | USART_CR1_UE;
 }
 
-void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
-    // Wait until the transmit data register is empty
-    while((serial_port->UART->ISR & USART_ISR_TXE) == 0) {
-        // Do nothing, just wait
-    }
+//void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
+//    // Wait until the transmit data register is empty
+//    while((serial_port->UART->ISR & USART_ISR_TXE) == 0) {
+//        // Do nothing, just wait
+//    }
+//
+//    // Send the data
+//    serial_port->UART->TDR = data;
+//}
 
-    // Send the data
-    serial_port->UART->TDR = data;
+
+void SerialOutputChar(uint8_t data, SerialPort *serial_port) {
+    // Wait if buffer is full
+    while (((serial_port->tx_head + 1) % TX_BUFFER_SIZE) == serial_port->tx_tail);
+
+    // Enqueue character
+    serial_port->tx_buffer[serial_port->tx_head] = data;
+    serial_port->tx_head = (serial_port->tx_head + 1) % TX_BUFFER_SIZE;
+
+    // Start TX interrupt (if not already running)
+    serial_port->tx_busy = 1;
+    serial_port->UART->CR1 |= USART_CR1_TXEIE;
 }
 
 void SerialOutputString(uint8_t *pt, SerialPort *serial_port) {
@@ -98,65 +112,4 @@ void SerialOutputString(uint8_t *pt, SerialPort *serial_port) {
         counter++;
         pt++;
     }
-}
-
-
-// returns 1 if valid char, 0 if timeout
-uint8_t SerialReceiveChar(SerialPort *serial_port, uint8_t *received_char) {
-    uint16_t timeout = 0xffff;
-
-    while (1) {
-        timeout--;
-        if (timeout == 0)
-            return 0;
-
-        // Check for overrun or framing error
-        if (serial_port->UART->ISR & USART_ISR_ORE || serial_port->UART->ISR & USART_ISR_FE) {
-            serial_port->UART->ICR |= USART_ICR_ORECF | USART_ICR_FECF;
-        }
-
-        // Check if data is available to read
-        if (serial_port->UART->ISR & USART_ISR_RXNE) {
-            break;
-        }
-    }
-
-    // Read the received data
-    *received_char = serial_port->UART->RDR;
-    return 1;
-}
-
-// Read a string from serial port into buffer until terminating character (CR or LF)
-uint16_t SerialInputString(SerialPort *serial_port) {
-    uint8_t receivedChar;
-    uint16_t index = 0;
-
-    // Clear buffer first
-    for (int i = 0; i < BUFFER_SIZE; i++) {
-        serial_port->rx_buffer[i] = 0;
-    }
-
-    // Read characters until enter key or buffer full
-    while (index < BUFFER_SIZE - 1) {
-        if (SerialReceiveChar(serial_port, &receivedChar)) {
-
-
-            // Store character in buffer
-            serial_port->rx_buffer[index++] = receivedChar;
-
-            // Break if CR or LF (terminating characters)
-            if (receivedChar == '\r' || receivedChar == '\n') {
-                break;
-            }
-        }
-    }
-
-    // Null-terminate the string
-    serial_port->rx_buffer[index] = '\0';
-
-    // Call the completion function if it exists
-    serial_port->completion_function(serial_port->rx_buffer, (uint8_t)index);
-
-
-    return index;
 }

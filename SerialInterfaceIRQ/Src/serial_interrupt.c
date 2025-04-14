@@ -10,17 +10,14 @@
 
 #include "stm32f303xc.h"
 
+
 // Flag to indicate if a complete string has been received
-volatile uint8_t string_recieved = 0;
+volatile uint8_t string_recieved;
 // Global index for storing characters in the buffer
 volatile uint8_t rx_index = 0;
-
 //receiving buffers
-volatile uint8_t rx_buffer1[BUFFER_SIZE];
-volatile uint8_t rx_buffer2[BUFFER_SIZE];
-
-
-
+uint8_t rx_buffer1[BUFFER_SIZE];
+uint8_t rx_buffer2[BUFFER_SIZE];
 
 
 void EnableSerialInterrupts(SerialPort *serial_port) {
@@ -32,8 +29,8 @@ void EnableSerialInterrupts(SerialPort *serial_port) {
 
     // Reset buffers
     for (int i = 0; i < BUFFER_SIZE; i++) {
-        rx_buffer1[i] = 0;
-        rx_buffer2[i] = 0;
+    	rx_buffer1[i] = 0;
+    	rx_buffer2[i] = 0;
     }
 
 
@@ -64,7 +61,7 @@ void USART1_EXTI25_IRQHandler(void) {
             rx_buffer1[rx_index++] = received_char;
 
             // Check if terminating character received
-            if (received_char == '\r') {
+            if (received_char == '\r' || received_char == '\n') {
                 // Null-terminate the string
                 rx_buffer1[rx_index] = '\0';
                 string_recieved = 1;
@@ -90,4 +87,15 @@ void USART1_EXTI25_IRQHandler(void) {
 
         }
     }
+    // Transmit handler
+    if ((USART1->CR1 & USART_CR1_TXEIE) && (USART1->ISR & USART_ISR_TXE)) {
+        if (USART1_PORT.tx_tail != USART1_PORT.tx_head) {
+            USART1->TDR = USART1_PORT.tx_buffer[USART1_PORT.tx_tail];
+            USART1_PORT.tx_tail = (USART1_PORT.tx_tail + 1) % TX_BUFFER_SIZE;
+        } else {
+            USART1->CR1 &= ~USART_CR1_TXEIE;
+            USART1_PORT.tx_busy = 0;
+        }
+    }
+
 }

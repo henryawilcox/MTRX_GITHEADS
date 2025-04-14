@@ -59,8 +59,8 @@ all: main-build
 main-build: SerialInterfaceIRQ.elf secondary-outputs
 
 # Tool invocations
-SerialInterfaceIRQ.elf SerialInterfaceIRQ.map: $(OBJS) $(USER_OBJS) /Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/henrywilcox/MTRX_GITHEADS/SerialInterfaceIRQ/STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+SerialInterfaceIRQ.elf SerialInterfaceIRQ.map: $(OBJS) $(USER_OBJS) C:\Users\emsto\Documents\MTRX2700CLab\MTRX_GITHEADS\SerialInterfaceIRQ\STM32F303VCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "SerialInterfaceIRQ.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\emsto\Documents\MTRX2700CLab\MTRX_GITHEADS\SerialInterfaceIRQ\STM32F303VCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="SerialInterfaceIRQ.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

@@ -24,10 +24,10 @@
 #include "serial.h"
 #include "stm32f303xc.h"
 #include "serial_interrupt.h"
-
-#if !defined(__SOFT_FP__) && defined(__ARM_FP)
-#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
-#endif
+//
+//#if !defined(__SOFT_FP__) && defined(__ARM_FP)
+//#warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
+//#endif
 
 void completion_callback(uint8_t *string_buffer, uint8_t length) {
     // This will only be called when a complete string has been received
@@ -35,8 +35,7 @@ void completion_callback(uint8_t *string_buffer, uint8_t length) {
     // Echo back the received string
     SerialOutputString((uint8_t*)"You entered: ", &USART1_PORT);
     SerialOutputString(string_buffer, &USART1_PORT);
-    SerialOutputString((uint8_t*)"\r", &USART1_PORT);
-    SerialOutputString((uint8_t*)"Characters received: ", &USART1_PORT);
+    SerialOutputString((uint8_t*)"\rCharacters received: ", &USART1_PORT);
 
     // Convert chars_read to string and display
     char num_str[10];
