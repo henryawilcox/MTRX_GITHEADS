@@ -1,9 +1,7 @@
-12:08:49 **** Incremental Build of configuration Debug for project SerialInterface ****
+12:39:37 **** Incremental Build of configuration Debug for project SerialInterface ****
 make -j9 all 
 arm-none-eabi-gcc "../Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/main.d" -MT"Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/main.o"
 arm-none-eabi-gcc "../Src/serial.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/serial.d" -MT"Src/serial.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/serial.o"
-arm-none-eabi-gcc "../Src/syscalls.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/syscalls.d" -MT"Src/syscalls.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/syscalls.o"
-arm-none-eabi-gcc "../Src/sysmem.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F303VCTx -DSTM32 -DSTM32F3 -DSTM32F3DISCOVERY -c -I../Inc -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"Src/sysmem.d" -MT"Src/sysmem.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Src/sysmem.o"
 ../Src/serial.c:15:26: warning: missing braces around initializer [-Wmissing-braces]
    15 | SerialPort USART1_PORT = {USART1,
       |                          ^
@@ -22,11 +20,11 @@ Finished building target: SerialInterface.elf
 arm-none-eabi-size  SerialInterface.elf 
 arm-none-eabi-objdump -h -S SerialInterface.elf  > "SerialInterface.list"
    text	   data	    bss	    dec	    hex	filename
-   4180	    376	   1896	   6452	   1934	SerialInterface.elf
+   4224	    376	   1896	   6496	   1960	SerialInterface.elf
 Finished building: default.size.stdout
  
 Finished building: SerialInterface.list
  
 
-12:08:50 Build Finished. 0 errors, 2 warnings. (took 1s.87ms)
+12:39:38 Build Finished. 0 errors, 2 warnings. (took 1s.46ms)
 

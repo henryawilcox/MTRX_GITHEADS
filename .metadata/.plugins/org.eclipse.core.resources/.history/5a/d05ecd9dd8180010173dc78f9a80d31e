@@ -1,0 +1,92 @@
+/*
+ * serial_interrupt.c
+ *
+ *  Created on: Apr 13, 2025
+ *      Author: henrywilcox
+ */
+
+#include "serial.h"
+#include "serial_interrupt.h"
+
+#include "stm32f303xc.h"
+
+// Flag to indicate if a complete string has been received
+volatile uint8_t string_recieved = 0;
+// Global index for storing characters in the buffer
+volatile uint8_t rx_index = 0;
+
+//receiving buffers
+volatile uint8_t rx_buffer1[BUFFER_SIZE];
+volatile uint8_t rx_buffer2[BUFFER_SIZE];
+
+
+
+void EnableSerialInterrupts(SerialPort *serial_port) {
+    // Disable interrupts while setting up
+    __disable_irq();
+
+    rx_index = 0;
+    string_recieved = 0;
+
+    // Reset buffers
+    for (int i = 0; i < BUFFER_SIZE; i++) {
+        rx_buffer1[i] = 0;
+        rx_buffer2[i] = 0;
+    }
+
+
+    // Enable RXNE interrupt
+    serial_port->UART->CR1 |= USART_CR1_RXNEIE;
+
+    // Enable the USART1 interrupt in NVIC (assuming USART1)
+    NVIC_EnableIRQ(USART1_IRQn);
+    NVIC_SetPriority(USART1_IRQn, 0);
+
+    // Re-enable interrupts
+    __enable_irq();
+}
+
+// USART1 interrupt handler
+void USART1_EXTI25_IRQHandler(void) {
+    // Check if we received data
+    if (USART1_PORT.UART->ISR & USART_ISR_RXNE) {
+        // Read the received data
+        uint8_t received_char = USART1_PORT.UART->RDR;
+
+        // Echo the character back immediately to test
+         SerialOutputChar(received_char, &USART1_PORT);
+
+        // Store the character if there's space in the buffer
+        if (rx_index < BUFFER_SIZE - 1) {
+            // Store character in buffer1
+            rx_buffer1[rx_index++] = received_char;
+
+            // Check if terminating character received
+            if (received_char == '\r') {
+                // Null-terminate the string
+                rx_buffer1[rx_index] = '\0';
+                string_recieved = 1;
+
+                //transfer buffer1 to buffer2 and reset buffer1
+
+                for (int i = 0; i < BUFFER_SIZE; i++) {
+                		rx_buffer2[i] = rx_buffer1[i]
+                        rx_buffer1[i] = 0;
+                }
+
+
+                USART1_PORT.completion_function(rx_buffer1, rx_index);
+
+                // Reset index after processing
+                rx_index = 0;
+            }
+        } else {
+            // Buffer overflow - reset
+            rx_index = 0;
+            uint8_t BUFFEROVERFLOW[BUFFER_SIZE] = "ERROR: BUFFER OVERFLOW";
+
+            USART1_PORT.completion_function(BUFFEROVERFLOW, rx_index);
+
+        }
+    }
+}

@@ -43,7 +43,7 @@ void completion_callback(uint8_t *string_buffer, uint8_t length) {
     SerialOutputString((uint8_t*)"\r\n\r\n", &USART1_PORT);
 
     // Prompt for next input
-    SerialOutputString((uint8_t*)"Enter text ('\\r' to terminate):\r\n", &USART1_PORT);
+    SerialOutputString((uint8_t*)"Enter text (RETURN to terminate):\r\n", &USART1_PORT);
 }
 
 int main(void) {
@@ -52,7 +52,7 @@ int main(void) {
 
     // Send initial welcome message
     SerialOutputString((uint8_t*)"UART ACTIVATED\r\n", &USART1_PORT);
-    SerialOutputString((uint8_t*)"Enter text ('\\r' to terminate):\r\n", &USART1_PORT);
+    SerialOutputString((uint8_t*)"Enter text (RETURN to terminate):\r\n", &USART1_PORT);
 
     /* Loop forever */
     for(;;) {

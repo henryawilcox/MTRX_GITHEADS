@@ -144,15 +144,16 @@ uint16_t SerialInputString(SerialPort *serial_port) {
             // Store character in buffer
             serial_port->rx_buffer[index++] = receivedChar;
 
+            SerialOutputChar(&receivedChar, serial_port);
+
             // Break if CR or LF (terminating characters)
             if (receivedChar == '\r' || receivedChar == '\n') {
+                serial_port->rx_buffer[index] = '\0';
                 break;
             }
         }
     }
 
-    // Null-terminate the string
-    serial_port->rx_buffer[index] = '\0';
 
     // Call the completion function if it exists
     serial_port->completion_function(serial_port->rx_buffer, (uint8_t)index);

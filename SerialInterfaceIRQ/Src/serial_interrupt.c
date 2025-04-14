@@ -15,6 +15,12 @@ volatile uint8_t string_recieved = 0;
 // Global index for storing characters in the buffer
 volatile uint8_t rx_index = 0;
 
+//receiving buffers
+volatile uint8_t rx_buffer1[BUFFER_SIZE];
+volatile uint8_t rx_buffer2[BUFFER_SIZE];
+
+
+
 
 
 void EnableSerialInterrupts(SerialPort *serial_port) {
@@ -24,13 +30,12 @@ void EnableSerialInterrupts(SerialPort *serial_port) {
     rx_index = 0;
     string_recieved = 0;
 
-    // Reset buffer
+    // Reset buffers
     for (int i = 0; i < BUFFER_SIZE; i++) {
-        serial_port->rx_buffer[i] = 0;
+        rx_buffer1[i] = 0;
+        rx_buffer2[i] = 0;
     }
 
-    // Clear any pending interrupts
-    serial_port->UART->ICR = 0xFFFFFFFF;
 
     // Enable RXNE interrupt
     serial_port->UART->CR1 |= USART_CR1_RXNEIE;
@@ -55,17 +60,23 @@ void USART1_EXTI25_IRQHandler(void) {
 
         // Store the character if there's space in the buffer
         if (rx_index < BUFFER_SIZE - 1) {
-            // Store character in buffer
-            USART1_PORT.rx_buffer[rx_index++] = received_char;
+            // Store character in buffer1
+            rx_buffer1[rx_index++] = received_char;
 
             // Check if terminating character received
             if (received_char == '\r') {
                 // Null-terminate the string
-                USART1_PORT.rx_buffer[rx_index] = '\0';
+                rx_buffer1[rx_index] = '\0';
                 string_recieved = 1;
 
+                //transfer buffer1 to buffer2 and reset buffer1
 
-                USART1_PORT.completion_function(USART1_PORT.rx_buffer, rx_index);
+                for (int i = 0; i < BUFFER_SIZE; i++) {
+                		rx_buffer2[i] = rx_buffer1[i];
+                        rx_buffer1[i] = 0;
+                }
+
+                USART1_PORT.completion_function(rx_buffer2, rx_index);
 
                 // Reset index after processing
                 rx_index = 0;
@@ -73,6 +84,10 @@ void USART1_EXTI25_IRQHandler(void) {
         } else {
             // Buffer overflow - reset
             rx_index = 0;
+            uint8_t BUFFEROVERFLOW[BUFFER_SIZE] = "ERROR: BUFFER OVERFLOW";
+
+            USART1_PORT.completion_function(BUFFEROVERFLOW, rx_index);
+
         }
     }
 }
