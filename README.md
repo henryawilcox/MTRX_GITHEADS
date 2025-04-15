@@ -12,17 +12,65 @@ Emily Stockwell
 # Digital IO
 
 ## Summary
-**bolding**
+The DigitalIO project interfaces with the LEDs and push button on the microcontroller. It allows the user to change the state of the leds using a button press, updating the bitmask displayed by the LEDS. The project also incorporates a timer module that enables one-shot timing operations, allowing for controlled timing between LED state changes.
 
 ## Usage
+Upload the code to your STM32F303 discovery board.
+The board will initialize with all LEDs off.
+Press the user button (blue button) to advance the LED pattern - a single LED will move across the board in a "chase" pattern.
 
+(if chase_led_cooldown is the callback function) It prevents multiple button presses from being processed too quickly (1 second cooldown).
 
 ## Valid Input
-
+Button press: Single press on the user button triggers the chase_led or chase_led_cooldown() function.
+(Timing is handled internally with no external input required)
 
 ## Functions and Modularity
+### digital_io.h
+- Defines core LED and button interface functions:
+- 	DigitalInitialise(): Initializes digital I/O with a callback for button press
+- 	GetLEDBitmask(): Returns the current LED pattern
+- 	SetLEDBitmask(): Sets LEDs according to an 8-bit mask
+
+### digital_io.c
+
+Contains implementation of LED control and button interrupt handling:
+
+- GPIO Initialization: Configures GPIOE pins PE8-PE15 as outputs for LEDs
+- Interrupt Setup: Configures PA0 (user button) with rising edge detection
+- Button Handler: EXTI0_IRQHandler() executes the registered callback when button is pressed, as an interrupt
+- LED Control: SetLEDBitmask() and GetLEDBitmask() manage LED states via a bitmask
+
+
+
+### timer.h and timer.c
+
+- TimerInitialise(): Sets up TIM2 for timing operations
+- Timer_StartOneShot(): Starts a one-shot timer with specified delay and callback
+- Interrupt Handler: TIM2_IRQHandler() executes callbacks when timer completes
+
+
+
+### main.c
+Main usage of the DigitalIO module:
+
+- Initalises digital IO, and calls callback to either chase_led or chase_led_cooldown
+
+- chase_led
+- 	chases LED around in a ciruclar pattern immediatly upon button press
+
+- chase_led_cooldown
+- 	calls oneshot timer to only allow a button press every 1s
+
 
 ## Testing
+
+| Test Case                        | Expected Output                        | Importance    |
+|----------------------------------|----------------------------------------|----------------------------------------|
+| Press button once             | Single LED advances position        |Validates input and output of software |
+| Press button repeatedly (chase_led as callback)          | Single LED advances immiediatly with each press         |Confirms chase_led has no delay |
+| Press button repeatedly (chase_led_cooldown as callback)      | Single LED advances only after 1s from last press   | confirms chase_led_cooldown correctly implemented timer|
+
 # Serial Interface
 ## Summary
 The SerialInterface project is the first part of Exercise 2: Serial Interface. It interfaces with UART1 of the STM32F3Discovery microcontroller to allow the module to read incoming characters into a memory buffer until a terminating character (a carriage return (`\r`) or newline (`\n`) in this case) is received. It then triggers a callback function that prints the string back onto the interface and the number of characters received, including the terminating character. It uses a blocking, polling-based approach to receive characters one at a time and process full messages when a terminator is detected.
@@ -91,17 +139,64 @@ The SerialInterface project is the first part of Exercise 2: Serial Interface. I
 
 # Serial Interface IRQ
 ## Summary
-**bolding**
+The SerialInterfaceIRQ project is the second part of Exercise 2: Serial Interface. It builds upon the previous polling-based implementation by using interrupts to handle incoming characters more efficiently. When characters arrive via UART1, an interrupt service routine (ISR) is triggered that reads the character, stores it in a buffer, and echoes it back to the terminal. Once a terminating character (carriage return \r or newline \n) is detected, a callback function prints the complete string and reports the character count, similar to the polling-based version. This interrupt-driven approach allows the main program to perform other tasks while waiting for serial input, improving overall system responsiveness.
 
 ## Usage
-
+1. Flash the code to your STM32F303 discovery board.
+2. Connect to the board using a serial terminal (e.g., PuTTY (Windows), Cutecom (Mac)) with the following settings:
+	- **Baud rate:** 115200
+	- **Data bits:** 8
+	- **Stop bits:** 1
+	- **Parity:** None
+	- **Flow control:** None
+	- **Line discipline options:** Local echo ON and (optional) Local line editing ON
+	- Implicit CR in every LF
+	- Implicit LF in every CR 
+	- Note: Ensure the Port number is the one you have the STM32 plugged into
+3. When prompted, type a message and press `Enter`. The board will:
+   - Print the full string once the line ends
+   - Report the total character count 
 
 ## Valid Input
+- Accepts any printable ASCII characters.
+- Input is terminated when a carriage return (`\r`) or newline (`\n`) is detected.
+- The input buffer is limited to 255 characters (defined by `BUFFER_SIZE`).
+- Characters beyond the buffer size will be ignored or discarded.
 
 
 ## Functions and Modularity
+### main.c
+- Initializes the serial interface using SerialInitialise().
+- Sets up the completion callback function completion_callback().
+- Enables interrupt-based reception with EnableSerialInterrupts().
+- Main loop remains empty as processing happens in the interrupt context.
+
+### serial_interrupt.c
+
+- EnableSerialInterrupts(): Configures the USART1 peripheral for interrupt-driven operation by enabling the RXNE (Receive Not Empty) interrupt and setting up the NVIC
+- USART1_EXTI25_IRQHandler(): The interrupt service routine that handles:
+	- Character reception, echoing, and buffer storage
+	- End-of-line detection and callback triggering
+	- Buffer overflow protection
+	- Transmit buffer management for non-blocking output
+
+### serial.c
+
+Contains the core serial configuration functions similar to the polling version:
+- SerialInitialise(): Sets up the USART peripheral, GPIO pins, and baud rate.
+- SerialOutputChar(): Implementation now uses a circular buffer for non-blocking transmission.
+- SerialOutputString(): Sends a null-terminated string using the non-blocking method.
 
 ## Testing
+## Testing
+| Test Case                        | Expected Output                        | Importance    |
+|----------------------------------|----------------------------------------|----------------------------------------|
+| `hello` + `Enter`               | Echoes back "hello", count = 6         |Checks for echoing and basic functionality. |
+| `ABC123!@#` + `Enter`           | Echoes full string, count = 10          |Confirms handling of mixed ASCII characters. |
+| Empty input + `Enter`           | Echoes blank, count = 1               | Edge case for no input (empty string).|
+| 254 characters + `Enter`        | Echoes up to limit, count = 255        |Ensures buffer boundary is respected.|
+| Exceed buffer then `Enter`      | Echoes up to limit, count = 255, then after next request for info, it echoes the remaining chars and the overflow count             |Validates robustness against buffer overflows.|
+
 
 # Timer Interface
 ## Summary
