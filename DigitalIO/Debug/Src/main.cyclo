@@ -1,2 +1,4 @@
-../Src/main.c:27:6:chase_led	2
-../Src/main.c:43:5:main	1
+../Src/main.c:31:6:reset_led_cooldown	1
+../Src/main.c:35:6:chase_led_cooldown	3
+../Src/main.c:60:6:chase_led	2
+../Src/main.c:76:5:main	1

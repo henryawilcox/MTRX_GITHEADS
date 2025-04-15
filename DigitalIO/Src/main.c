@@ -19,10 +19,43 @@
 #include <stdint.h>
 #include "digital_io.h"
 #include "stm32f303xc.h"
+#include "timer.h"
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
   #warning "FPU is not initialized, but the project is compiling for an FPU. Please initialize the FPU before use."
 #endif
+// Global variable to track if LED updates are allowed
+volatile uint8_t led_update_allowed = 1;  // 1 = allowed, 0 = not allowed
+
+// Called when timer expires
+void reset_led_cooldown(void) {
+    led_update_allowed = 1;  // Allow LED updates again
+}
+
+void chase_led_cooldown() {
+    // Check if we're allowed to update LEDs now
+    if (led_update_allowed) {
+        // Get current LED state
+        uint8_t led_mask = GetLEDBitmask();
+
+        // Shift left by 1
+        led_mask <<= 1;
+        if (led_mask == 0) {
+            led_mask = 1;
+        }
+
+        // Update LED state
+        SetLEDBitmask(led_mask);
+
+        // Start cooldown period
+        led_update_allowed = 0;  // Prevent further updates
+
+        // Start timer - when it expires, reset_led_cooldown will be called
+        Timer_StartOneShot(1000, reset_led_cooldown);  // 1s cooldown
+    }
+    // If led_update_allowed is 0, we simply ignore this button press
+}
+
 
 void chase_led(){
 	{
@@ -42,7 +75,7 @@ void chase_led(){
 
 int main(void)
 {
-	DigitalInitialise(&chase_led);
+	DigitalInitialise(&chase_led_cooldown);
     /* Loop forever */
 	for(;;);
 }
