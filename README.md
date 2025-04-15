@@ -119,14 +119,81 @@ The SerialInterface project is the first part of Exercise 2: Serial Interface. I
 
 # Integration Interface
 ## Summary
-**bolding**
+
+Integration demonstrates each of the components of the lab: **Digital IO** (LED bitmask control), **Serial Interfacing** (UART receive/transmit) and **Timer Interfacing** (one-shot and periodic actions). 
+
+It listens for an interrupt that indicates serial input. When it receives a string with an operation and an operand, it applies an 'if-else' sequence for each operation. It applies input validity checks then calls on the functions from each individual module.
 
 ## Usage
 
+1. Flash the code to your STM32F303 discovery board.
+2. Connect to the board using a serial terminal (e.g., PuTTY (Windows), Cutecom (Mac)) with the following settings:
+- **Baud rate:** 115200
+- **Data bits:** 8
+- **Stop bits:** 1
+- **Parity:** None
+- **Flow control:** None
+- **Line discipline options:** Local echo ON and (optional) Local line editing ON
+- Implicit CR in every LF
+- Implicit LF in every CR 
+- Note: Ensure the Port number is the one you have the STM32 plugged into
+3. When prompted, type a command of one of the following forms and press `Enter`:
+- `led 10101010` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Sets LEDs to a binary pattern  
+- `serial hello` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Echoes the string "hello"  
+- `oneshot 1000` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Waits 1000ms and performs one action  
+- `timer 500` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Starts a periodic task every 500ms
+
+
+After each command, a response is printed over UART and the program prompts for the next input.
+
 
 ## Valid Input
+| Command    | Operand Type | Format                     | Notes                                 |
+|------------|--------------|----------------------------|----------------------------------------|
+| `led`      | Binary String| Exactly 8 characters (0/1) | Controls LED bitmask output           |
+| `serial`   | Any string    | Max length 254 chars       | Echoed back to user                   |
+| `oneshot`  | Integer       | Positive number (ms)       | One-time delay               |
+| `timer`    | Integer       | Positive number (ms)       | Repeated delay               |
+
+Invalid inputs (e.g. wrong formats, missing operands, too long) are caught and reported with `"Invalid input"` or `"Invalid command"` messages.
 
 
 ## Functions and Modularity
 
+This project combines the program files from each of the other projects, including:
+- Digital_io.c
+- Serial_interrupt.c
+- Serial.c
+- Timer.c
+As well as each of their respective header files. 
+
+The `main.c` file consists of the following functions and their calls to functions in each project file:
+- **`main()`**  
+  Initializes serial communication, sets up digital and timer subsystems, and enables RX interrupts then continues in infinite loop as it waits for an interrupt.
+
+- **`completion_callback()`**  
+  Triggered when a complete input string is received. Parses and validates the input, then:
+  - Routes to `SetLEDBitmask()` in `digital_io.c` for the `led` operation
+  - Echoes back strings for the `serial` operation
+  - Calls `oneshot_action()` from `timer.c` for delayed output
+  - Calls `periodic_action()` from `timer.c` for repeated timer behaviour
+
+- **`is_number()`**  
+  Utility function that checks if a string contains only numeric digits.
+
+
 ## Testing
+| Input Command         | Expected Behaviour                               | Importance                             |
+|-----------------------|--------------------------------------------------|---------------------------------------------|
+| `led 10101010`        | LEDs set in 0b10101010 pattern                   | Tests binary parsing and LED control        |
+| `led 10101`           | "Invalid input." message                         | Validates input length                      |
+| `serial hello world`  | Echoes "hello world"                             | Verifies full string echoing over UART      |
+| `oneshot 1000`        | Executes action after ~1s delay                  | Confirms numeric parsing and timing         |
+| `timer 250`           | Starts periodic blinking switching every .25 seconds                        | Validates looped timer behaviour             |
+| `timer abc`           | "Invalid input." message                         | Catches non-numeric operand                 |
+| `MTRX 2700`             | "Invalid command." message                       | Ensures invalid commands are rejected       |
+
+### Additional Checks
+It is also important to check that the running of consecutive commands works as desired.
+Calling the oneshot when the lights are on.![image](https://github.com/user-attachments/assets/7e2d368d-1128-4a2d-b8cf-655cb974c828)
+
