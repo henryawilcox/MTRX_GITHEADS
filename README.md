@@ -174,7 +174,7 @@ The `main.c` file consists of the following functions and their calls to functio
 
 - **`completion_callback()`**  
   Triggered when a complete input string is received. Parses and validates the input, then:
-  - Routes to `SetLEDBitmask()` in `digital_io.c` for the `led` operation
+  - Stops the timer if it is running then routes to `SetLEDBitmask()` in `digital_io.c` for the `led` operation
   - Echoes back strings for the `serial` operation
   - Calls `oneshot_action()` from `timer.c` for delayed output
   - Calls `periodic_action()` from `timer.c` for repeated timer behaviour
@@ -196,5 +196,9 @@ The `main.c` file consists of the following functions and their calls to functio
 
 ### Additional Checks
 It is also important to check that the running of consecutive commands works as desired.
-Calling the oneshot when the lights are on
+
+If you are running the timer operation:
+	-If you call the `oneshot` operation, it should turn the LEDs off for the delay period, flash, then stay off. This shows the timer from the previous command has been stopped. It also should not change if the oneshot function is called when the timer flashes are on or off.
+ 	- If the `led` operation is called, it should change to the provided bitmask and stay that way.
+ 
 
