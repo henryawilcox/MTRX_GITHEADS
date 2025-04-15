@@ -138,10 +138,10 @@ It listens for an interrupt that indicates serial input. When it receives a stri
 - Implicit LF in every CR 
 - Note: Ensure the Port number is the one you have the STM32 plugged into
 3. When prompted, type a command of one of the following forms and press `Enter`:
-- `led 10101010` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Sets LEDs to a binary pattern  
-- `serial hello` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Echoes the string "hello"  
-- `oneshot 1000` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Waits 1000ms and performs one action  
-- `timer 500` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Starts a periodic task every 500ms
+- `led [8-digit binary]` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Sets LEDs to a binary pattern
+- `serial [string]` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Echoes the string
+- `oneshot [integer]` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Waits delay of [integer] and then flashes LEDs  
+- `timer [integer]` &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;→ Starts flashing LEDs with delay of [integer]
 
 
 After each command, a response is printed over UART and the program prompts for the next input.
@@ -195,5 +195,5 @@ The `main.c` file consists of the following functions and their calls to functio
 
 ### Additional Checks
 It is also important to check that the running of consecutive commands works as desired.
-Calling the oneshot when the lights are on.![image](https://github.com/user-attachments/assets/7e2d368d-1128-4a2d-b8cf-655cb974c828)
+Calling the oneshot when the lights are on
 
