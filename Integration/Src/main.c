@@ -69,6 +69,7 @@ void completion_callback(uint8_t *string_buffer, uint8_t length) {
 
         // If valid, convert to bitmask and set
         SerialOutputString((uint8_t*)"You selected led operation\r\n", &USART1_PORT);
+        TIM2->CR1 &= ~TIM_CR1_CEN; // Stop the timer before resetting LEDs
         uint8_t bitmask = (uint8_t)strtol(operand, NULL, 2);
         SetLEDBitmask(bitmask);
         SerialOutputString((uint8_t*)"LED pattern set.\r\n", &USART1_PORT);
