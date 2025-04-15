@@ -57,26 +57,26 @@ The SerialInterface project is the first part of Exercise 2: Serial Interface. I
 - Initializes the serial interface using `SerialInitialise()`.
 - Polls to check for inputs using 'SerialInputString()'.
 - Defines a **callback function** `completion_callback()` which:
-	○  Echoes back the full string
-	○ Reports the number of characters received
-	○ Prompts for the next input
+- 	Echoes back the full string
+- 	Reports the number of characters received
+- 	Prompts for the next input
 
 ### `serial.h`
 
 - Defines constants and types:
-	○ `BUFFER_SIZE` – sets the size of the receive buffer
-	○ `BaudRate` –  for supported baud rate values
-	○ `SerialPort` – structure for USART port configuration and buffers
+- 	`BUFFER_SIZE` – sets the size of the receive buffer
+- 	'BaudRate` –  for supported baud rate values
+- 	'SerialPort` – structure for USART port configuration and buffers
 - Declares the core serial communication functions used throughout the program.
 
 ### `serial.c`
 
 - Contains the implementation of all UART functions:
-	○ **SerialInitialise():** Configures the USART peripheral and relevant GPIO pins, sets baud rate, and enables transmission and reception.
-	○ **SerialOutputChar():** Waits until the transmit buffer of the UART is ready, then sends one character.
-	○ **SerialOutputString():** Sends a full null-terminated string over UART, character by character using `SerialOutputChar()`.
-	○ **SerialReceiveChar():** Waits for a character to be received, handling timeout and overrun errors. Returns 1 if character is received successfully.
-	○ **SerialInputString():** Reads characters until `\r` or `\n` is received, stores them in the `rx_buffer`, echoes them one by one, and then triggers the callback. Returns the number of characters received (excluding null terminator).
+- 	**SerialInitialise():** Configures the USART peripheral and relevant GPIO pins, sets baud rate, and enables transmission and reception.
+- 	**SerialOutputChar():** Waits until the transmit buffer of the UART is ready, then sends one character.
+- 	**SerialOutputString():** Sends a full null-terminated string over UART, character by character using `SerialOutputChar()`.
+- 	**SerialReceiveChar():** Waits for a character to be received, handling timeout and overrun errors. Returns 1 if character is received successfully.
+- 	**SerialInputString():** Reads characters until `\r` or `\n` is received, stores them in the `rx_buffer`, echoes them one by one, and then triggers the callback. Returns the number of characters received (excluding null terminator).
 
 
 ## Testing
