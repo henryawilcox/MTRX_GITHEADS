@@ -90,7 +90,7 @@ void completion_callback(uint8_t *string_buffer, uint8_t length) {
     }
 
     else if (strcmp(operation, "oneshot") == 0) {
-    	// Check the operand is a number under
+    	// Check the operand is a number before calling the action
     	if (is_number(operand)) {
     		SerialOutputString((uint8_t*)"You selected oneshot operation\r\n", &USART1_PORT);
     		uint32_t wait_time_example = (uint32_t)strtol(operand, NULL, 10);
@@ -103,6 +103,7 @@ void completion_callback(uint8_t *string_buffer, uint8_t length) {
     }
 
     else if (strcmp(operation, "timer") == 0) {
+    	// Check the operand is a number before calling the action
         if (is_number(operand)) {
         	SerialOutputString((uint8_t*)"You selected timer operation\r\n", &USART1_PORT);
         	uint32_t delay_period_example = (uint32_t)strtol(operand, NULL, 10);
