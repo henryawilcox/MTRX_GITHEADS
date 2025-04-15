@@ -198,7 +198,7 @@ The `main.c` file consists of the following functions and their calls to functio
 It is also important to check that the running of consecutive commands works as desired.
 
 If you are running the timer operation:
-	-If you call the `oneshot` operation, it should turn the LEDs off for the delay period, flash, then stay off. This shows the timer from the previous command has been stopped. It also should not change if the oneshot function is called when the timer flashes are on or off.
- 	- If the `led` operation is called, it should change to the provided bitmask and stay that way.
+- 	If you call the `oneshot` operation, it should turn the LEDs off for the delay period, flash, then stay off. This shows the timer from the previous command has been stopped. It also should not change if the oneshot function is called when the timer flashes are on or off.
+- 	If the `led` operation is called, it should change to the provided bitmask and stay that way.
  
 
