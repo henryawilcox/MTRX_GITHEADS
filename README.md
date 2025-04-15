@@ -65,8 +65,8 @@ The SerialInterface project is the first part of Exercise 2: Serial Interface. I
 
 - Defines constants and types:
 	- 	`BUFFER_SIZE` – sets the size of the receive buffer
-	- 	'BaudRate` –  for supported baud rate values
-	- 	'SerialPort` – structure for USART port configuration and buffers
+	- 	'BaudRate' –  for supported baud rate values
+	- 	'SerialPort' – structure for USART port configuration and buffers
 - Declares the core serial communication functions used throughout the program.
 
 ### `serial.c`
