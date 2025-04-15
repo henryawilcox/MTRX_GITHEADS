@@ -7,6 +7,7 @@
  * Initialize digital I/O module with a callback for button press
  * on_button_press Function to call when button is pressed
  */
+
 void DigitalInitialise(void (*callback)());
 
 //Get current state of bitmask and return it

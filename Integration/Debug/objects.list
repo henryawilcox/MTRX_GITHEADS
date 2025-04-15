@@ -4,4 +4,5 @@
 "./Src/serial_interrupt.o"
 "./Src/syscalls.o"
 "./Src/sysmem.o"
+"./Src/timer.o"
 "./Startup/startup_stm32f303vctx.o"

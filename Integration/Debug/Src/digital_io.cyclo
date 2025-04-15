@@ -1,9 +1,7 @@
 ../Inc/core_cm4.h:1688:22:__NVIC_EnableIRQ	2
 ../Inc/core_cm4.h:1816:22:__NVIC_SetPriority	2
-../Src/digital_io.c:32:6:EXTI0_IRQHandler	2
-../Src/digital_io.c:46:6:enable_clocks	1
-../Src/digital_io.c:52:6:initialise_board	1
-../Src/digital_io.c:59:6:enable_interrupt	1
-../Src/digital_io.c:90:9:GetLEDBitmask	1
-../Src/digital_io.c:100:6:SetLEDBitmask	1
-../Src/digital_io.c:112:6:DigitalInitialise	1
+../Src/digital_io.c:14:6:EXTI0_IRQHandler	2
+../Src/digital_io.c:26:6:enable_interrupt	1
+../Src/digital_io.c:57:9:GetLEDBitmask	1
+../Src/digital_io.c:67:6:SetLEDBitmask	1
+../Src/digital_io.c:79:6:DigitalInitialise	1

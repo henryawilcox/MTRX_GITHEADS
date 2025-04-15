@@ -1,10 +1,3 @@
-/*
- * serial_interrupt.c
- *
- *  Created on: Apr 13, 2025
- *      Author: henrywilcox
- */
-
 #include "serial.h"
 #include "serial_interrupt.h"
 #include "stm32f303xc.h"
@@ -48,16 +41,11 @@ void EnableSerialInterrupts(SerialPort *serial_port) {
 
 // Interrupt Service Routine for USART1
 void USART1_EXTI25_IRQHandler(void) {
-    // ---------------------------
-    // RX SECTION
-    // ---------------------------
+
     // Check if RXNE (Receive Data Register Not Empty) is set
     if (USART1_PORT.UART->ISR & USART_ISR_RXNE) {
         // Read the incoming character
         uint8_t received_char = USART1_PORT.UART->RDR;
-
-        // Echo the character back for user feedback
-        SerialOutputChar(received_char, &USART1_PORT);
 
         // Only process if there's space in the buffer
         if (rx_index < BUFFER_SIZE - 1) {
@@ -90,17 +78,18 @@ void USART1_EXTI25_IRQHandler(void) {
         }
     }
 
-    // ---------------------------
-    // TX SECTION
-    // ---------------------------
     // Check if TXE (Transmit Data Register Empty) interrupt is enabled and pending
     if ((USART1->CR1 & USART_CR1_TXEIE) && (USART1->ISR & USART_ISR_TXE)) {
+
         // Check if there is data left to transmit in the circular buffer
         if (USART1_PORT.tx_tail != USART1_PORT.tx_head) {
+
             // Send next character from the TX buffer
             USART1->TDR = USART1_PORT.tx_buffer[USART1_PORT.tx_tail];
             USART1_PORT.tx_tail = (USART1_PORT.tx_tail + 1) % TX_BUFFER_SIZE;
+
         } else {
+
             // Transmission is complete — disable TXE interrupt
             USART1->CR1 &= ~USART_CR1_TXEIE;
             USART1_PORT.tx_busy = 0;
