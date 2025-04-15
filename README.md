@@ -57,9 +57,9 @@ The SerialInterface project is the first part of Exercise 2: Serial Interface. I
 - Initializes the serial interface using `SerialInitialise()`.
 - Polls to check for inputs using 'SerialInputString()'.
 - Defines a **callback function** `completion_callback()` which:
-- 	Echoes back the full string
-- 	Reports the number of characters received
-- 	Prompts for the next input
+	- Echoes back the full string
+	- 	Reports the number of characters received
+	- 	Prompts for the next input
 
 ### `serial.h`
 
