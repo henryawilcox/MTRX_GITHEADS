@@ -161,10 +161,11 @@ Invalid inputs (e.g. wrong formats, missing operands, too long) are caught and r
 ## Functions and Modularity
 
 This project combines the program files from each of the other projects, including:
-- Digital_io.c
-- Serial_interrupt.c
-- Serial.c
-- Timer.c
+- `Digital_io.c`
+- `Serial_interrupt.c`
+- `Serial.c`
+- `Timer.c`
+  
 As well as each of their respective header files. 
 
 The `main.c` file consists of the following functions and their calls to functions in each project file:
