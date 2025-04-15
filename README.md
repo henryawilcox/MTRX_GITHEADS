@@ -5,9 +5,13 @@ Henry Atticus Wilcox
 Emily Stockwell
 
 # Roles and Responsibilities
+Henry: Digital IO and Serial Communication
+Rory: Hardware Timers and Team Documentation
+Emily: Integration
 
 # Project Overview
-
+The goal of the project is to complete three modules (Digital IO, Serial Interface, Hardware Timers), and then combine them together to achieve the integration task as outlined:
+Using the modules developed already (without making any changes to the modules), develop a program that can take in a string from the serial port. This string should be parsed to extract the desired behaviour. The first part of the string should be text to indicate the desired operation, the second part of the string should be a value to use as an operand. The parser should be able to distinguish between four different commands sent over serial. For a serial command to turn on the LEDs in a certain pattern, the command should be similar to: "led 10001010" The operand is a binary string that turns on/off the leds in this pattern. For a serial command to cause the message to be sent back through the serial port, the command should be similar to "serial This is a string that should be written back to the serial port" the operand is a string that should be transmitted over the serial. For a serial command to trigger a one-shot timer action, the command should be similar to: "oneshot 1000" the operand is a number that is the number of milliseconds for the one shot timer to run. For a serial command to trigger a continuous timer action, the command should be similar to: "timer 1000" the operand is a number that is the number of milliseconds for the timer period.
 
 # Digital IO
 
