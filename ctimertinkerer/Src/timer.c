@@ -128,7 +128,6 @@ void initialise_board(void) {
     if (EXTI->PR & EXTI_PR_PR0) {
         EXTI->PR |= EXTI_PR_PR0;
 
-        //uint32_t delay = 1000;
         Timer_StartOneShot(oneShotBlink);
     }
 }*/
