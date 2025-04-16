@@ -1,6 +1,6 @@
 # MTRX_GITHEADS
 Group 10 GITHEADS
-|---------------|----------------------|------------------|
+
 | Rory Clements | Henry Atticus Wilcox | Emily Stockwell |
 |---------------|----------------------|------------------|
 
