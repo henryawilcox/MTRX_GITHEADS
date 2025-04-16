@@ -19,6 +19,7 @@
 #include "digital_io.h"
 #include <stdint.h>
 #include "stm32f303xc.h"
+#include "timer.h"
 
 
 #if !defined(__SOFT_FP__) && defined(__ARM_FP)
@@ -116,6 +117,9 @@ void DigitalInitialise(void (*callback)())
 {
 	enable_clocks();
 	initialise_board();
+
+	// Initialize timer
+	TimerInitialise();
 
 	// set the interrupt handling function
 	on_button_press = callback;

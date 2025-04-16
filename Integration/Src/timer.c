@@ -30,6 +30,9 @@ void Timer_Start(void) {
 }
 
 void Timer_StartOneShot(uint32_t delay_ms, TimerCallback cb) {
+	uint8_t *led_output = ((uint8_t *)&(GPIOE->ODR)) + 1;
+	*led_output = 0x00; //turn off LEDs
+
     isOneShotMode = 1;
     oneShotCallback = cb;
 

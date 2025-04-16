@@ -4,9 +4,12 @@
 
 
 
-// We store the pointers to the GPIO and USART that are used
-//  for a specific serial port. To add another serial port
-//  you need to select the appropriate values.
+/*
+ * We store the pointers to the GPIO and USART that are used
+ * for a specific serial port. To add another serial port
+ * you need to select the appropriate values.
+ *
+ */
 
 
 
@@ -140,11 +143,8 @@ uint16_t SerialInputString(SerialPort *serial_port) {
     while (index < BUFFER_SIZE - 1) {
         if (SerialReceiveChar(serial_port, &receivedChar)) {
 
-
             // Store character in buffer
             serial_port->rx_buffer[index++] = receivedChar;
-
-            SerialOutputChar(&receivedChar, serial_port);
 
             // Break if CR or LF (terminating characters)
             if (receivedChar == '\r' || receivedChar == '\n') {
