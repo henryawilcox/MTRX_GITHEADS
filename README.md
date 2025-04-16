@@ -221,17 +221,20 @@ No direct inputs in serial. However, delay must be of the size 32 bits (or less)
 
 ## Functions and Modularity
 All functions are included in timer.c.
-Timer_Init = Initialises the timer for periodic timing, and internally defines a period and sets it using setTimerPeriod
-Timer_Start = Begins the timer counting by setting the control register to on.
-Timer_StartOneShot = Initialises the timer for a one shot configuration, and internally defines a period and sets it using setTimerPeriod
-setTimerPeriod = Takes in a integer as argument and sets the overflow ARR value to that number
-getTimerPeriod = Retrieves and returns the ARR value
-TIM2_IRQHandler = Checks to see if the Timer is set to oneshot or periodic configuration, then calls the appropriate GPIO behaviours with periodicBlink OR oneShotBlink
-periodicBlink = Begins periodic flashing of LEDs in the bit mask 10101010
-oneShotBlink = Triggers a one shot timer that flashes all LEDs in the bit mask 11111111 at the conclusion of the oneshot timing.
-enable_clocks = Enables the clocks (from Tutorial)
-initialise_board = Initialises the board (from Tutorial)
-EXTI0_IRQHandler = Handles the external interrupt triggered by the user button press and uses it to initiate either timer configurations and calls.
+| Function/Name         | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| Timer_Init            | Initialises the timer for periodic timing, and internally defines a period and sets it using setTimerPeriod |
+| Timer_Start           | Begins the timer counting by setting the control register to on.                              |
+| Timer_StartOneShot    | Initialises the timer for a one shot configuration, and internally defines a period and sets it using setTimerPeriod |
+| setTimerPeriod        | Takes in a integer as argument and sets the overflow ARR value to that number                 |
+| getTimerPeriod        | Retrieves and returns the ARR value                                                           |
+| TIM2_IRQHandler       | Checks to see if the Timer is set to oneshot or periodic configuration, then calls the appropriate GPIO behaviours with periodicBlink OR oneShotBlink |
+| periodicBlink         | Begins periodic flashing of LEDs in the bit mask 10101010                                     |
+| oneShotBlink          | Triggers a one shot timer that flashes all LEDs in the bit mask 11111111 at the conclusion of the oneshot timing. |
+| enable_clocks         | Enables the clocks (from Tutorial)                                                            |
+| initialise_board      | Initialises the board (from Tutorial)                                                         |
+| EXTI0_IRQHandler      | Handles the external interrupt triggered by the user button press and uses it to initiate either timer configurations and calls. |
+
 
 # Integration Interface
 ## Summary
