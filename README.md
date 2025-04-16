@@ -1,8 +1,9 @@
 # MTRX_GITHEADS
 Group 10 GITHEADS
-Rory Clements
-Henry Atticus Wilcox
-Emily Stockwell
+|---------------|----------------------|------------------|
+| Rory Clements | Henry Atticus Wilcox | Emily Stockwell |
+|---------------|----------------------|------------------|
+
 
 # Roles and Responsibilities
 Henry: Digital IO and Serial Communication
