@@ -6,9 +6,12 @@ Group 10 GITHEADS
 
 
 # Roles and Responsibilities
-Henry: Digital IO and Serial Communication
-Rory: Hardware Timers and Team Documentation
-Emily: Integration
+| Name   | Responsibility                        |
+|--------|----------------------------------------|
+| Henry  | Digital IO and Serial Communication    |
+| Rory   | Hardware Timers and Team Documentation |
+| Emily  | Integration                            |
+
 
 # Project Overview
 The goal of the project is to complete three modules (Digital IO, Serial Interface, Hardware Timers), and then combine them together to achieve the integration task as outlined:
