@@ -202,19 +202,36 @@ Contains the core serial configuration functions similar to the polling version:
 | Exceed buffer then `Enter`      | Echoes up to limit, count = 255, then after next request for info, it echoes the remaining chars and the overflow count             |Validates robustness against buffer overflows.|
 
 
-# Timer Interface
+# Hardware Timer Interface
 ## Summary
-**bolding**
+The objective of the Hardware Timers section is tri-fold. Firstly, a module to implement a periodic timer is required. It should be able to be triggered when called by a function callback. Secondly, the function should be able to reset the timer with a new period. The period should be able to be set without global definition. Get set functions can be used in this case. Finally, a one-shot timer should be able to be triggered in a similar fashion, where a light will flash once and indicate the conclusion of the one-shot.
 
 ## Usage
-
+1. Open the timer.c file
+2. Since only one external interrupt handler for a button can be used at any one time, select the handler that corresponds to the desired behaviour (one-shot OR periodic timing)
+3. Edit the delay variable (unint32_t delay) in the respective function:
+   Timer_StartOneShot for One Shot wait-time
+   Timer_Init for Periodic Timer period
+   corresponding to the period in milliseconds. (1000ms = 1s)
+5. Flash the code to your STM32F303 discovery board.
+6. Press the button to trigger interrupt and enable the timing (oneshot will wait the delay time and then flash once, remaining off until the button is pressed again to trigger another oneshot) (periodic will start off for the period time, then flash on and hold for the period time, then turn off for the period time and repeat)
 
 ## Valid Input
-
+No direct inputs in serial. However, delay must be of the size 32 bits (or less). Make sure the desired handler is uncommented in the timer.c and that both handlers are not uncommented at run time.
 
 ## Functions and Modularity
-
-## Testing
+All functions are included in timer.c.
+Timer_Init = Initialises the timer for periodic timing, and internally defines a period and sets it using setTimerPeriod
+Timer_Start = Begins the timer counting by setting the control register to on.
+Timer_StartOneShot = Initialises the timer for a one shot configuration, and internally defines a period and sets it using setTimerPeriod
+setTimerPeriod = Takes in a integer as argument and sets the overflow ARR value to that number
+getTimerPeriod = Retrieves and returns the ARR value
+TIM2_IRQHandler = Checks to see if the Timer is set to oneshot or periodic configuration, then calls the appropriate GPIO behaviours with periodicBlink OR oneShotBlink
+periodicBlink = Begins periodic flashing of LEDs in the bit mask 10101010
+oneShotBlink = Triggers a one shot timer that flashes all LEDs in the bit mask 11111111 at the conclusion of the oneshot timing.
+enable_clocks = Enables the clocks (from Tutorial)
+initialise_board = Initialises the board (from Tutorial)
+EXTI0_IRQHandler = Handles the external interrupt triggered by the user button press and uses it to initiate either timer configurations and calls.
 
 # Integration Interface
 ## Summary
